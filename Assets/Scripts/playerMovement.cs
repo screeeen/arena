@@ -32,7 +32,6 @@ public class playerMovement : MonoBehaviour
 		{
 //				sizeDust = Random.Range (0.1f, 0.5f);
 				if (!gameObject.GetComponent<disparo> ().isLaserState) {
-						#if UNITY_EDITOR || UNITY_ANDROID
 //						speed = 2;
 						if (InputHelper.left ()) {
 								transform.position += new Vector3 (-speed, 0, 0);
@@ -62,66 +61,6 @@ public class playerMovement : MonoBehaviour
 //								currentDust.GetComponent<dustScr> ().offset = Random.Range (0f, 0.5f);
 //								currentDust.transform.localScale = new Vector3 (sizeDust, sizeDust, sizeDust);
 						}
-						#endif
-		
-						#if UNITY_IOS || UNITY_ANDROID
-
-						//INPUT DEDO
-						Vector2 touchDeltaPosition = InputHelper.touch ();
-						#endif
-
-						#if UNITY_IOS 
-
-						accX = touchDeltaPosition.x * Time.deltaTime * acceleartionTouch;
-						accY = touchDeltaPosition.y * Time.deltaTime * acceleartionTouch;
-#endif
-						#if UNITY_ANDROID
-
-						var offset = 0;
-
-						if (Screen.width > Screen.height) {
-								offset = Screen.height;
-						} else {
-								offset = Screen.width;
-						}
-
-
-						accX = touchDeltaPosition.x * Time.deltaTime * acceleartionTouch * Screen.dpi / offset * 30;
-						accY = touchDeltaPosition.y * Time.deltaTime * acceleartionTouch * Screen.dpi / offset * 30;
-
-
-
-
-
-#endif
-						#if UNITY_IOS || UNITY_ANDROID
-						speedX = accX * speed;
-						speedY = accY * speed;
-//						print ("CODE ACCELERATION XY   " + accX + "  " + accY);
-						transform.position += new Vector3 (speedX, speedY, 0);
-
-						if (Input.touchCount == 2) {
-								Touch touch1 = Input.touches [0];
-								Touch touch2 = Input.touches [1];
-
-
-								if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved) {
-										touchDeltaPosition = (touch1.deltaPosition + touch2.deltaPosition);
-
-
-										accX = touchDeltaPosition.x * Time.deltaTime * acceleartionTouch;
-										accY = touchDeltaPosition.y * Time.deltaTime * acceleartionTouch;
-										speedX = accX * speed;
-										speedY = accY * speed;
-										transform.position += new Vector3 (speedX, speedY, 0);
-
-								}
-						}
-
-				}
-
-
-#endif
 
 				//BOUNDARIES
 				cameraScript _cameraScript = Camera.main.GetComponent<cameraScript> ();
@@ -147,6 +86,7 @@ public class playerMovement : MonoBehaviour
 				
 
 		}
+	}
 
 		public void rotateShipDirection (enemyController _enemyController)
 		{
@@ -225,21 +165,6 @@ public class playerMovement : MonoBehaviour
 			
 						other.GetComponent<naveProxyController> ().setWorking ();
 						gameObject.GetComponent<gizmosProxy> ().createGizmos ();
-				}
-
-		
-				if (other.gameObject.tag == "arana" && gameControl.currentState == gameControl.State.TUTORIAL) {
-
-						GameObject g = GameObject.FindGameObjectWithTag ("GameController");
-						g.GetComponent<gameControl> ().failingTutorial ();
-
-				}
-
-				if (other.gameObject.tag == "snake" && gameControl.currentState == gameControl.State.TUTORIAL) {
-
-						GameObject g = GameObject.FindGameObjectWithTag ("GameController");
-						g.GetComponent<gameControl> ().failingTutorial ();
-
 				}
 		}
 

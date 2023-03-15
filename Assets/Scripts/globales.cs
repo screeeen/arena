@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-using UnityEngine.Advertisements;
 
 
 public class globales : MonoBehaviour
@@ -54,20 +53,12 @@ public class globales : MonoBehaviour
 		public static bool tutorialIsFinished = false;
 		public static bool showUnity;
 
-		private static Soomla.Store.EventHandler handler;
-
 		public static Vector2 SCREENVECTOR;
 		public static Vector2 SCREENSCALE;
 
 		public static string OLEADA;
 
-		static List<Matrix4x4> stack;
-
-		//ADVERTISING
-//		public GameObject iAD;
-//		public GameObject GoogleMob;
-//		public GameObject ADbanner;
-	
+		static List<Matrix4x4> stack;	
 
 		public void Awake ()
 		{
@@ -75,7 +66,7 @@ public class globales : MonoBehaviour
 				getData ();
 				setCamera ();
 				if (numberOfGames == null) {
-						numberOfGames = 0;
+					numberOfGames = 0;
 				}
 				stack = new List<Matrix4x4> ();
 				milisecsEnemyDestroyed = 30;
@@ -83,12 +74,6 @@ public class globales : MonoBehaviour
 				goldenVersion = false;
 				showUnity = true;
 
-				#if UNITY_IOS || UNITY_ANDROID
-//				iAD.SetActive (true);
-//				GoogleMob.SetActive (true);
-//				ADbanner.SetActive (true);
-//				Advertisement.Initialize ("56260", true);
-				#endif
 		}
 
 		static public void BeginGUI ()
@@ -150,35 +135,15 @@ public class globales : MonoBehaviour
 				
 				dustLevel = 1;
 				showAdApple = false;
-				handler = new Soomla.Store.EventHandler ();//for android check!
-				Soomla.Store.StoreEvents.OnSoomlaStoreInitialized += onSoomlaStoreInitialized;
-				Soomla.Store.SoomlaStore.Initialize (new Soomla.Store.GameAssets ()); //for android check!
+				
+				
+				
 		}
 
-		public void onSoomlaStoreInitialized ()
-		{
-
-				print ("Soomla inicializada");
-				print ("GET VALUE STORE " + Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_GOOD.ItemId));
-		
-				int val = Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_GOOD.ItemId);
-		
-				if (val < 1) {
-						globales.goldenVersion = false;
-						print ("IS PLATA");
-				} else {
-						globales.goldenVersion = true;
-						print ("IS GOLDEN");
-
-				}
-		
-		}
-	
 		// Update is called once per frame
 		void Update ()
 		{
 
-				#if UNITY_EDITOR || UNITY_ANDROID
 
 				if (Input.GetKeyDown (KeyCode.A)) {
 //						deleteData ();
@@ -189,75 +154,18 @@ public class globales : MonoBehaviour
 						setCamera ();
 						if (ISWIDE) {
 								ISWIDE = false;
-//								Debug.Log ("NOT IS WIDE");
+								Debug.Log ("NOT IS WIDE");
 						} 
 						if (!ISWIDE) {
 								ISWIDE = true;
-//								Debug.Log ("YES IS WIDE");
+								Debug.Log ("YES IS WIDE");
 
 						}
 						GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().levelUpgrade ();
-
 				}
-
-				#endif
-
-
-
-				#if (UNITY_IOS ||UNITY_ANDROID)  && !UNITY_EDITOR
-
-				//CHANGE MIMIC
-		if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-			Camera.main.orthographicSize = 9;
-			cameraScript.initOrthoSize = 9;
-//			Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-			HEIGHT = 1536;
-			WIDTH = 2048;
-			setCamera();
-			ISWIDE = false;
-			if(GameObject.FindGameObjectWithTag ("agujerosParent")){
-				print ("FOUND AGUJ H");
-			GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.8f, 1f));
-			}
-			setPosAgujeros();
-
-						}
-		if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-			Camera.main.orthographicSize = 6;
-			cameraScript.initOrthoSize = 6;
-//			Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-			HEIGHT = 2048;
-			WIDTH = 1536;
-			setCamera();
-			ISWIDE = true;
-			if(GameObject.FindGameObjectWithTag ("agujerosParent")){
-//				print ("FOUND AGUJ V");
-			GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.4f, 1f));
-			}
-			setPosAgujeros();			
-		}
-				#endif
-
 		}
 
-		public static void setPosAgujeros ()
-		{
-				#if UNITY_IOS || UNITY_ANDROID
-				if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-
-						if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-								GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.8f, 1f));
-						}
-				}
-
-				if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-
-						if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-								GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.4f, 1f));
-						}
-				}
-				#endif
-		}
+		
 
 		public static void clearMenu ()
 		{
@@ -326,7 +234,7 @@ public class globales : MonoBehaviour
 
 		public static Color getRandomColor ()
 		{
-				Color32 r;
+				Color32 r =  new Color32(128, 255, 128, 255);;
 		
 				r.r = (byte)Random.Range (128, 255);
 				r.g = (byte)Random.Range (128, 255);
@@ -340,7 +248,7 @@ public class globales : MonoBehaviour
 		public static void setGrey ()
 		{
 
-				Color32 r;
+				Color32 r =  new Color32(128, 255, 128, 255);;
 		
 				byte n = (byte)85;
 				r.r = n;
@@ -529,9 +437,4 @@ public class globales : MonoBehaviour
 				yield return new WaitForSeconds (t);
 				yield return null;
 		}
-
-
-
-
-	
 }

@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Advertisements;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using UnityEngine.SocialPlatforms;
+
 
 
 // GAME CONTROL ARENA
@@ -103,54 +100,7 @@ public class gameControl : MonoBehaviour
 
 		public static bool slowMotion = false;
 		public static bool slowDead = false;
-
-	#if UNITY_ANDROID
-
-//	PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-//		// enables saving game progress.
-//		.EnableSavedGames()
-//			// registers a callback to handle game invitations received while the game is not running.
-//			.WithInvitationDelegate(<callback method>)
-//			// registers a callback for turn based match notifications received while the
-//			// game is not running.
-//			.WithMatchDelegate(<callback method>)
-//			.Build();
-#endif
-
-	
-	
-		void Awake ()
-		{
-				#if UNITY_IOS
-				gameCenter = new GameCenterSingleton ();
-				gameCenter.Initialize ();
-				Advertisement.Initialize ("55242", true);
-				#endif
-
-				#if UNITY_ANDROID
-				Advertisement.Initialize ("56260", false);
 		
-//		PlayGamesPlatform.InitializeInstance(config);
-				// recommended for debugging:
-				PlayGamesPlatform.DebugLogEnabled = true;
-				// Activate the Google Play Games platform
-				PlayGamesPlatform.Activate ();
-
-				#endif
-		}
-	
-		public void callScoreTable ()
-		{
-				#if UNITY_IOS
-				gameCenter.ShowLeaderboardUI ();
-				#endif
-
-				#if UNITY_ANDROID
-				PlayGamesPlatform.Instance.ShowLeaderboardUI ("CgkI44DYkKITEAIQAA");
-				#endif
-
-		}
-	
 		void Start ()
 		{
 				highPos = Camera.main.ScreenToWorldPoint (new Vector2 (globales.SCREENW / 2, globales.SCREENH / 1.4f));
@@ -159,15 +109,6 @@ public class gameControl : MonoBehaviour
 				slowDead = false;
 
 				posH = midPos;
-
-				#if UNITY_IOS || UNITY_ANDROID
-				if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-						posH = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.8f, 1f));
-				}
-				if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-						posH = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.4f, 1f));
-				}
-				#endif
 
 				_music = music.GetComponent<AudioSource> ();
 		}
@@ -178,22 +119,14 @@ public class gameControl : MonoBehaviour
 				tempLevel = globales.level;
 		
 
-				#if UNITY_EDITOR && (!UNITY_ANDROID || !UNITY_IOS)
 				if (InputHelper.space ()) {
 						switch (currentState) {
 						case State.MENU:
 								Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shake", 4f);
 								StartCoroutine ("waitTime", 2f);
 								removeMenu ();
-								if (checkTutorial ()) {
-										currentState = State.TUTORIAL;
-										resetTutorial ();
-								} else {
-										toGame ();
-										currentState = State.INGAME;
-								}
-								break;
-						case State.TUTORIAL:
+								toGame ();
+								currentState = State.INGAME;
 								break;
 						case State.MAP:
 								break;	
@@ -208,45 +141,8 @@ public class gameControl : MonoBehaviour
 				
 						}
 				}
-		
-				#endif
-		
-				#if UNITY_ANDROID || UNITY_IOS
-				for (int i = 0; i < Input.touchCount; ++i) {
-						if (Input.GetTouch (i).phase.Equals (TouchPhase.Began)) {
-								switch (currentState) {
-								case State.MENU:
-										Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shake", 4f);
-										StartCoroutine ("waitTime", 2f);
-										removeMenu ();
-//					
-//										if (checkTutorial ()) {
-//												currentState = State.TUTORIAL;
-//												resetTutorial ();
-//
-//										} else {
-										toGame ();
-										currentState = State.INGAME;
-//										}
-										break;
-								case State.TUTORIAL:
-										break;
-								case State.MAP:
-										break;	
-								case State.INTERLUDE:
-										break;
-								case State.NEWWEAPON:
-										break;
-								case State.GAMEOVER:
-										break;
-								case State.INGAME:
-										break;
-								case State.STORE:
-										break;
-								}
-						}
-				}
-				#endif
+				
+				
 
 				if (currentState == State.INGAME) {
 						stageTime += Time.deltaTime;
@@ -310,15 +206,6 @@ public class gameControl : MonoBehaviour
 								_music.volume -= 0.2f;
 						}
 				} 
-
-				if (currentState == gameControl.State.TUTORIAL && globales.tutorialEnemiesReady) {
-						checkRemoveTutorial ();
-				}
-
-				//FINISHED TUTORIAL
-				if (globales.tutorialIsFinished) {
-						Time.timeScale = 0.0f;	
-				}
 
 				//SLOWDOWN AUDIO
 				if (currentState == State.GAMEOVER && SoundManager.soundPlayer.pitch > 0.25f) {
@@ -386,19 +273,6 @@ public class gameControl : MonoBehaviour
 		{
 				setLastKills ();
 				currentState = State.INGAME;
-
-				// ADS IPAD RELOAD
-				if (!globales.goldenVersion) {
-						#if UNITY_IOS
-						if ((UnityEngine.iOS.Device.generation.ToString ()).IndexOf ("iPad") > -1) {
-							if (!globales.showAdApple) {
-								ADInterstitial.fullscreenAd.ReloadAd ();
-								globales.showAdApple = true;
-								print ("load IOS " + globales.showAdApple);
-				}
-			}
-						#endif
-				}
 				globales.showUnity = false;	
 
 		
@@ -428,7 +302,7 @@ public class gameControl : MonoBehaviour
 								currentPlayer = (GameObject)Instantiate (player, highPos, Quaternion.identity);
 						}
 
-						globales.setPosAgujeros ();
+						// globales.setPosAgujeros ();
 
 						if (!_enemyController) {
 								currentEnemyController = (GameObject)Instantiate (enemyController, posH, Quaternion.identity);
@@ -744,27 +618,6 @@ public class gameControl : MonoBehaviour
 		
 		}
 
-		IEnumerator runTutorial ()
-		{
-		
-				yield return new WaitForSeconds (0.5f);
-				print (_enemyController);
-				if (_enemyController && !globales.tutorialEnemiesReady) {
-						_enemyController.GetComponent<enemyController> ().createSpider ();
-						_enemyController.GetComponent<enemyController> ().createSpider ();
-						_enemyController.GetComponent<enemyController> ().createSpider ();
-						_enemyController.GetComponent<enemyController> ().createSpider ();
-						_enemyController.GetComponent<enemyController> ().createSnake ();
-						yield return new WaitForSeconds (8f);
-
-						globales.tutorialEnemiesReady = true;
-				}
-
-//				yield return new WaitForSeconds (8f);
-				yield return null;
-		
-		}
-
 		IEnumerator ChangeLevelWait (float seconds)
 		{
 
@@ -798,20 +651,7 @@ public class gameControl : MonoBehaviour
 		{
 				if (globales.kills > globales.maxKills1) {
 						globales.maxKills1 = globales.kills;
-						globales.showNewRecord = true;
-
-#if UNITY_IOS
-						if (Social.localUser.authenticated) {
-								gameCenter.ReportScore ((long)globales.maxKills1, "01");
-						}
-#endif
-
-#if UNITY_ANDROID
-						Social.ReportScore (globales.maxKills1, "CgkI44DYkKITEAIQAA", (bool success) => {
-								// handle success or failure
-						});
-#endif
-			
+						globales.showNewRecord = true;			
 				}
 		
 		}
@@ -938,54 +778,6 @@ public class gameControl : MonoBehaviour
 				}
 		}
 
-
-		public void  resetTutorial ()
-		{
-//		
-//				currentState = State.TUTORIAL;
-//				globales.tutorial = true;
-//				globales.tutorialEnemiesReady = false;
-//		
-//				//create enemy controller
-//				if (!currentEnemyController) {
-//						currentEnemyController = (GameObject)Instantiate (enemyController, midPos, Quaternion.identity);
-//						_enemyController = currentEnemyController.GetComponent<enemyController> ();
-//						_enemyController.initHolesTutorial ();
-//				}
-//		
-//
-//				Instantiate (tutorialControllerObj, Vector2.zero, Quaternion.identity);
-//
-//				if (!currentPlayer) {
-//						currentPlayer = (GameObject)Instantiate (player, highPos, Quaternion.identity);
-//						Vector3 p = new Vector3 (transform.rotation.x, transform.rotation.y, -90f);
-//						currentPlayer.transform.rotation = Quaternion.Euler (p);
-//						Vector3 s = new Vector3 (2, 2, 2);
-//						currentPlayer.transform.localScale = s;
-//
-//				}
-//
-//				StartCoroutine ("runTutorial");
-		}
-
-		public void finishTutorial ()
-		{
-//
-//				globales.tutorialIsFinished = true;
-//				StartCoroutine ("waitForTouchDown");
-//
-//				globales.tutorial = false;
-//				globales.tutorialEnemiesReady = false;
-//				_enemyController.deleteHoles ();
-//				Destroy (currentEnemyController);
-//				GameObject holeTutorial = GameObject.FindGameObjectWithTag ("agujeroTutorial");
-//				GameObject h = GameObject.FindGameObjectWithTag ("agujerosParent");
-//				Destroy (h);
-//
-//				toGame ();
-		}
-
-
 		public void OnApplicationQuit ()
 		{
 				Destroy (gameObject);
@@ -1011,29 +803,5 @@ public class gameControl : MonoBehaviour
 				}
 		}
 
-	
-		public void failingTutorial ()
-		{
-				clearEnemies ();
-				globales.failedTutorial = true;
-				StartCoroutine ("waitTime", 8f);
-				resetTutorial ();
-				globales.failedTutorial = false;
-				;
-
-		}
-
-	
-	
-		public void checkRemoveTutorial ()
-		{
-				if (globales.tutorial) {
-						if (GameObject.FindGameObjectsWithTag ("arana").Length < 1 && GameObject.FindGameObjectsWithTag ("snake").Length < 1) {
-					
-								finishTutorial ();
-						}
-				}
-		
-		}
 }
 
