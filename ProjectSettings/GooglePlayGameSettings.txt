@@ -1,0 +1,6 @@
+lastUpgrade=00921
+proj.AppId=661996830819
+android.SetupDone=true
+ios.ClientId=661996830819-bcuoq1abtbrqm9m71ukrhada6pib8lvh.apps.googleusercontent.com
+ios.BundleId=com.UndergroundGames.Wormos
+ios.SetupDone=true
