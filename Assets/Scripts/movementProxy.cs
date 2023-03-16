@@ -19,22 +19,23 @@ public class movementProxy : MonoBehaviour
 						Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
 						transform.rotation = Quaternion.Euler (p);
 			
-						//						Debug.DrawLine (transform.position, Vector2.right, Color.white);
-						//						Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+												Debug.DrawLine (transform.position, Vector2.right, Color.white);
+												Debug.DrawLine (transform.position, Vector3.forward, Color.red);
 				}
 		}
 
 		public void rotateInactive ()
 		{
-
-
-//				Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
-//				transform.rotation = Quaternion.Euler (p);
+				enemyController _enemyController = enemyController.GetComponent<enemyController> ();
+				GameObject closest = _enemyController.getClosest (transform.position);
+				float angle = calculateAngle (closest.transform.position);
+				Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
+				transform.rotation = Quaternion.Euler (p);
 
 				transform.Rotate (Vector3.forward);
 			
-				//						Debug.DrawLine (transform.position, Vector2.right, Color.white);
-				//						Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+										Debug.DrawLine (transform.position, Vector2.right, Color.white);
+										Debug.DrawLine (transform.position, Vector3.forward, Color.red);
 				
 		}
 	

@@ -27,79 +27,31 @@ public class playerMovement : MonoBehaviour
 		public float decc;
 		public float acceleartionTouch;
 
+		
+		
+
 	
 		public void move ()
 		{
-//				sizeDust = Random.Range (0.1f, 0.5f);
+
 				if (!gameObject.GetComponent<disparo> ().isLaserState) {
-//						speed = 2;
+
 						if (InputHelper.left ()) {
 								transform.position += new Vector3 (-speed, 0, 0);
-//								currentDust = Instantiate (dust, transform.position, transform.rotation)as GameObject;
-//								currentDust.transform.Translate (new Vector3 (speed, 0, 0));
-//								currentDust.GetComponent<dustScr> ().offset = Random.Range (0f, 0.5f);
-//								currentDust.transform.localScale = new Vector3 (sizeDust, sizeDust, sizeDust);
+
 						}
 						if (InputHelper.right ()) {
 								transform.position += new Vector3 (speed, 0, 0);
-//								currentDust = Instantiate (dust, transform.position, transform.rotation) as GameObject;
-//								currentDust.GetComponent<dustScr> ().offset = Random.Range (0f, 0.5f);
-//								currentDust.transform.localScale = new Vector3 (sizeDust, sizeDust, sizeDust);
-//								currentDust.transform.Translate (new Vector3 (-speed, 0, 0));
-						}
-						if (InputHelper.up ()) {
-								transform.position += new Vector3 (0, speed, 0);
-//								currentDust = Instantiate (dust, transform.position, transform.rotation)as GameObject;
-//								currentDust.transform.Translate (new Vector3 (0, -speed, 0));
-//								currentDust.GetComponent<dustScr> ().offset = Random.Range (0f, 0.5f);
-//								currentDust.transform.localScale = new Vector3 (sizeDust, sizeDust, sizeDust);
+
 						}
 						if (InputHelper.down ()) {
 								transform.position += new Vector3 (0, -speed, 0);
-//								currentDust = Instantiate (dust, transform.position, transform.rotation)as GameObject;
-//								currentDust.transform.Translate (new Vector3 (0, speed, 0));
-//								currentDust.GetComponent<dustScr> ().offset = Random.Range (0f, 0.5f);
-//								currentDust.transform.localScale = new Vector3 (sizeDust, sizeDust, sizeDust);
+
 						}
+						if (InputHelper.up ()) {
+								transform.position += new Vector3 (0, speed, 0);
 
-				//BOUNDARIES
-				cameraScript _cameraScript = Camera.main.GetComponent<cameraScript> ();
-
-				if (transform.position.x > globales.maxX) {
-						Vector3 p = new Vector3 (globales.minX, transform.position.y, 0);
-						transform.position = p;
-				} 
-
-				if (transform.position.x < globales.minX) {
-						Vector3 p = new Vector3 (globales.maxX, transform.position.y, 0);
-						transform.position = p;
-				}
-
-				if (transform.position.y > globales.minY) {
-						Vector3 p = new Vector3 (transform.position.x, globales.maxY, 0);
-						transform.position = p;
-				}
-				if (transform.position.y < globales.maxY) {
-						Vector3 p = new Vector3 (transform.position.x, globales.minY, 0);
-						transform.position = p;
-				}
-				
-
-		}
-	}
-
-		public void rotateShipDirection (enemyController _enemyController)
-		{
-				closest = _enemyController.getClosest (transform.position);
-				if (closest) {
-			
-						float angle = calculateAngle (closest.transform.position);
-			
-						Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
-						transform.rotation = Quaternion.Euler (p);
-			
-//						Debug.DrawLine (transform.position, Vector2.right, Color.white);
-//						Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+						}
 				}
 		}
 
@@ -129,7 +81,7 @@ public class playerMovement : MonoBehaviour
 				if (other.gameObject.tag == "coin") {
 						SoundManager.playPillarPaqueteClip ();
 						CoinsManager.addCoins (other.GetComponent<Coin> ().coinTypeVar);
-//						other.gameObject.GetComponent<Coin> ().triggerAnim ();
+
 					
 
 						StartCoroutine (moveCoin (other.gameObject));
@@ -166,6 +118,21 @@ public class playerMovement : MonoBehaviour
 						other.GetComponent<naveProxyController> ().setWorking ();
 						gameObject.GetComponent<gizmosProxy> ().createGizmos ();
 				}
+
+		
+				// if (other.gameObject.tag == "arana" && gameControl.currentState == gameControl.State.TUTORIAL) {
+
+				// 		GameObject g = GameObject.FindGameObjectWithTag ("GameController");
+				// 		// g.GetComponent<gameControl> ().failingTutorial ();
+
+				// }
+
+				// if (other.gameObject.tag == "snake" && gameControl.currentState == gameControl.State.TUTORIAL) {
+
+				// 		GameObject g = GameObject.FindGameObjectWithTag ("GameController");
+				// 		// g.GetComponent<gameControl> ().failingTutorial ();
+
+				// }
 		}
 
 		IEnumerator moveCoin (GameObject coin)
@@ -180,6 +147,39 @@ public class playerMovement : MonoBehaviour
 						yield return new WaitForSeconds (0f);
 				}
 		}
+
+		public void rotateShipDirection (enemyController _enemyController )
+		{
+
+				// enemyController _enemyController = enemyController.GetComponent<enemyController> ();
+				GameObject closest = _enemyController.getClosest (transform.position);
+
+				if (closest) {
+			
+					float angle = calculateAngle (closest.transform.position);
+		
+					Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
+					transform.rotation = Quaternion.Euler (p);
+		
+					Debug.DrawLine (transform.position, Vector2.right, Color.white);
+					Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+				}
+		}
+
+		// public void rotateInactive ()
+		// {
+		// 		enemyController _enemyController = enemyController.GetComponent<enemyController> ();
+		// 		GameObject closest = _enemyController.getClosest (transform.position);
+		// 		float angle = calculateAngle (closest.transform.position);
+		// 		Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
+		// 		transform.rotation = Quaternion.Euler (p);
+
+		// 		transform.Rotate (Vector3.forward);
+			
+		// 		Debug.DrawLine (transform.position, Vector2.right, Color.white);
+		// 		Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+				
+		// }
 	
 	
 		float calculateAngle (Vector2 target)

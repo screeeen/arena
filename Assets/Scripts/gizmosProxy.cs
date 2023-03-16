@@ -31,7 +31,6 @@ public class gizmosProxy : MonoBehaviour
 										l2.name = "yo";
 //										GameObject p = GameObject.FindGameObjectWithTag ("Player");
 //										if (p) {
-										print ("player");
 										l2.GetComponent<LineScr> ().setParams (gameObject, go);
 										l2.transform.parent = transform;
 

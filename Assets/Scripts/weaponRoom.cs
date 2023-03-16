@@ -270,8 +270,8 @@ public class weaponRoom : MonoBehaviour
 
 						if (GUI.Button (rectWinners, "◊", lowBarPlaySt)) {
 								SoundManager.playLongButton ();
-								// gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-								// gameControlObj.GetComponent<gameControl> ().callScoreTable ();
+								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
+								gameControlObj.GetComponent<gameControl> ().callScoreTable ();
 						}
 			
 						if (GUI.Button (rectRetry, "PLAY", lowBarPlaySt)) {
@@ -279,6 +279,8 @@ public class weaponRoom : MonoBehaviour
 								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 								gameControl.currentState = (gameControl.State)4;
 								gameControlObj.GetComponent<gameControl> ().toGame ();
+								#if UNITY_IOS || UNITY_ANDROID
+								#endif
 								globales.showNewRecord = false;
 								globales.showNewLevel = false;
 				

@@ -36,7 +36,7 @@ public class WinTextScript : MonoBehaviour
 //		var dimensions = GUI.skin.label.CalcSize (new GUIContent (winText));
 
 
-		Color32 r = new Color32(128, 255, 128, 255);;
+		Color32 r = new Color32(64, 128, 192, 255);
 //				byte n = (byte)Random.Range (0, 255);
 		r.r = (byte)Random.Range (minColor, 255);
 		r.g = (byte)Random.Range (minColor, 255);
