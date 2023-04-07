@@ -7,7 +7,6 @@ public class AudioToggle : MonoBehaviour
 
 
 		Toggle tog;
-//		public Sprite offSound;
 
 		// Use this for initialization
 		void Start ()

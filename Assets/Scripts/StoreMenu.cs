@@ -402,19 +402,8 @@ public class StoreMenu : MonoBehaviour
 						GUI.Label (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y, sizeCoinButton.x * globales.SCREENSCALE.x, sizeCoinButton.y * 2 * globales.SCREENSCALE.y), "YOUR\nCOINS: \n\n<color=black>" + Soomla.Store.StoreInventory.GetItemBalance ("currency_coin") + "</color>", storeButtonWinSt);
 			
 						// UNITY ADS VIDEO
-						if (GUI.Button (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y * 3, (sizeCoinButton.x) * globales.SCREENSCALE.x, sizeCoinButton.y * globales.SCREENSCALE.y), Advertisement.isReady () ? "<size=10>EARN\nCOINS!</size>\n<size=7>WATCH FULL VIDEO!</size>" : "WAITING...", storeButtonWinSt)) {
-								// Show with default zone, pause engine and print result to debug log
-								Advertisement.Show (null, new ShowOptions {
-				pause = false,
-				resultCallback = result => {
-					if (result == ShowResult.Finished) {
-//						globales.runDigits(CoinsManager.coins,CoinsManager.coins + 80);
-//						StartCoroutine(runDigits(CoinsManager.coins,CoinsManager.coins+120));
-						CoinsManager.addCoins (420);
+						if (GUI.Button (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y * 3, (sizeCoinButton.x) * globales.SCREENSCALE.x, sizeCoinButton.y * globales.SCREENSCALE.y), "")) {
 
-					}
-				}
-			});
 						}
 
 						//BUY PREMIUM

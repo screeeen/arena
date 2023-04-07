@@ -4,7 +4,7 @@ using System.Collections;
 public class animKillObj : MonoBehaviour
 {
 
-		public float decreaseOpacity;
+		// public float decreaseOpacity;
 
 		public void callEvent ()
 		{
@@ -13,8 +13,8 @@ public class animKillObj : MonoBehaviour
 		}
 
 
-		public void getTransparent ()
-		{
+		// public void getTransparent ()
+		// {
 //				float opacity = GetComponent<SpriteRenderer> ().color.a;
 //				while (GetComponent<SpriteRenderer> ().color.a != 0f) {
 //				decreaseOpacity = -0.01f;
@@ -27,6 +27,6 @@ public class animKillObj : MonoBehaviour
 //				GetComponent<SpriteRenderer> ().color = c;
 //						opacity -= decreaseOpacity;
 //				}
-		}
+		// }
 
 }

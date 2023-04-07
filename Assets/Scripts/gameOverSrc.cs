@@ -313,8 +313,8 @@ public class gameOverSrc : MonoBehaviour
 		if (!globales.goldenVersion) {
 			Vector2 sizeButton = new Vector2 (globales.SCREENW, globales.SCREENH / 14);
 			
-			Soomla.Store.PurchasableVirtualItem pviRayos = Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads") as Soomla.Store.PurchasableVirtualItem;
-			Soomla.Store.MarketItem mi = (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem) as Soomla.Store.MarketItem;
+			// Soomla.Store.PurchasableVirtualItem pviRayos = Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads") as Soomla.Store.PurchasableVirtualItem;
+			// Soomla.Store.MarketItem mi = (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem) as Soomla.Store.MarketItem;
 				
 			if (!WeaponsController.bombaPurchased [1]) {
 				float bPos = 2.8f;
@@ -328,12 +328,10 @@ public class gameOverSrc : MonoBehaviour
 					bSize = 1.8f;
 				}
 				
-				if (GUI.Button (new Rect (0, messageMax.y + marqueeSt.fontSize * bPos, sizeButton.x * globales.SCREENSCALE.x, (sizeButton.y * bSize) * globales.SCREENSCALE.y), "REMOVE ADS AND GET 1000 COINS\nONLY " + mi.MarketPriceAndCurrency, storeButtonSt)) {
-
-					SoundManager.playShortButton ();
-					
-					Soomla.Store.StoreInventory.BuyItem (Soomla.Store.GameAssets.RAYOS_ITEM_ID as string);//Soomla.Store.VirtualGood
-				}
+				// if (GUI.Button (new Rect (0, messageMax.y + marqueeSt.fontSize * bPos, sizeButton.x * globales.SCREENSCALE.x, (sizeButton.y * bSize) * globales.SCREENSCALE.y), "REMOVE ADS AND GET 1000 COINS\nONLY " + mi.MarketPriceAndCurrency, storeButtonSt)) {
+					// SoundManager.playShortButton ();
+					// Soomla.Store.StoreInventory.BuyItem (Soomla.Store.GameAssets.RAYOS_ITEM_ID as string);//Soomla.Store.VirtualGood
+				// }
 				
 			} 
 		}

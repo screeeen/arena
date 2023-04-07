@@ -46,8 +46,6 @@ public class cameraScript : MonoBehaviour
 
 	IEnumerator shakeSmall (float t)
 	{
-		
-		
 		while (t>0) {
 			globales.shaking = true;
 

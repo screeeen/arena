@@ -7,7 +7,6 @@ public class bulletScrKillSprite : MonoBehaviour
 	
 		public void OnBecameInvisible ()
 		{
-//				Destroy (gameObject);
 				Destroy (transform.parent.gameObject);
 
 		}

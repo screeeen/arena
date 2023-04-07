@@ -28,7 +28,7 @@ public class movementProxy : MonoBehaviour
 		{
 				enemyController _enemyController = enemyController.GetComponent<enemyController> ();
 				GameObject closest = _enemyController.getClosest (transform.position);
-				float angle = calculateAngle (closest.transform.position);
+				float angle = closest ? calculateAngle (closest.transform.position): .0f;
 				Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
 				transform.rotation = Quaternion.Euler (p);
 

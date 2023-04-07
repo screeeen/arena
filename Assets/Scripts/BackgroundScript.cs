@@ -4,17 +4,10 @@ using System.Collections;
 public class BackgroundScript : MonoBehaviour
 {
 
-
-		/// <summary>
-		/// Tile prefab to fill background.
-		/// </summary>
 		[SerializeField]
 		public GameObject
 				tilePrefab;
-	
-		/// <summary>
-		/// Use this for initialization 
-		/// </summary>
+
 		void Start ()
 		{
 				fillBg ();
