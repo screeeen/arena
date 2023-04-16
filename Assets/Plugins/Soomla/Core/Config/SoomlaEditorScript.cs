@@ -59,7 +59,7 @@ namespace Soomla
 						
 						string fullPath = Path.Combine(Path.Combine("Assets", soomSettingsPath),
 						                               soomSettingsAssetName + soomSettingsAssetExtension);
-						AssetDatabase.CreateAsset(instance, fullPath);
+						// AssetDatabase.CreateAsset(instance, fullPath);
 #endif
 					}
 				}

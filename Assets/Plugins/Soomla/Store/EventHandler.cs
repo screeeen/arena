@@ -38,8 +38,8 @@ namespace Soomla.Store
 						StoreEvents.OnRestoreTransactionsFinished += onRestoreTransactionsFinished;
 						StoreEvents.OnSoomlaStoreInitialized += onSoomlaStoreInitialized;
 						#if UNITY_ANDROID && !UNITY_EDITOR
-			StoreEvents.OnIabServiceStarted += onIabServiceStarted;
-			StoreEvents.OnIabServiceStopped += onIabServiceStopped;
+						StoreEvents.OnIabServiceStarted += onIabServiceStarted;
+						StoreEvents.OnIabServiceStopped += onIabServiceStopped;
 						#endif
 				}
 		
@@ -69,7 +69,7 @@ namespace Soomla.Store
 				public void onItemPurchased (PurchasableVirtualItem pvi, string payload)
 				{
 
-						WeaponsController.updateWeapons ();
+						// WeaponsController.updateWeapons ();
 
 
 //						switch (pvi.Name) {
@@ -105,24 +105,24 @@ namespace Soomla.Store
 ////								break;
 //						}
 
-						switch (pvi.Name) {
-						case "Laser":
-								WeaponsController.weaponActivated [1] = WeaponsController.setMeOnly (1);
-								WeaponsController.currentWeapon = WeaponsController.WEAPONS.LASER;
-								break;
-						case "Tway":
-								WeaponsController.weaponActivated [2] = WeaponsController.setMeOnly (2);
-								WeaponsController.currentWeapon = WeaponsController.WEAPONS.TWAY;
-								break;
-						case "Circles":
-								WeaponsController.weaponActivated [3] = WeaponsController.setMeOnly (3);
-								WeaponsController.currentWeapon = WeaponsController.WEAPONS.CIRCULAR;
-								break;
-						case "Moire":
-								WeaponsController.weaponActivated [4] = WeaponsController.setMeOnly (4);
-								WeaponsController.currentWeapon = WeaponsController.WEAPONS.MOIRE;
-								break;
-						}
+						// switch (pvi.Name) {
+						// case "Laser":
+						// 		WeaponsController.weaponActivated [1] = WeaponsController.setMeOnly (1);
+						// 		WeaponsController.currentWeapon = WeaponsController.WEAPONS.LASER;
+						// 		break;
+						// case "Tway":
+						// 		WeaponsController.weaponActivated [2] = WeaponsController.setMeOnly (2);
+						// 		WeaponsController.currentWeapon = WeaponsController.WEAPONS.TWAY;
+						// 		break;
+						// case "Circles":
+						// 		WeaponsController.weaponActivated [3] = WeaponsController.setMeOnly (3);
+						// 		WeaponsController.currentWeapon = WeaponsController.WEAPONS.CIRCULAR;
+						// 		break;
+						// case "Moire":
+						// 		WeaponsController.weaponActivated [4] = WeaponsController.setMeOnly (4);
+						// 		WeaponsController.currentWeapon = WeaponsController.WEAPONS.MOIRE;
+						// 		break;
+						// }
 			
 				}
 		
@@ -245,9 +245,9 @@ namespace Soomla.Store
 				{
 //						// pintar feedback
 //						if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_ITEM_ID) > 0) {
-						if (success) {
-								CoinsManager.isPurchasesRestored = true;
-						}
+						// if (success) {
+						// 		CoinsManager.isPurchasesRestored = true;
+						// }
 //						}
 
 				}
