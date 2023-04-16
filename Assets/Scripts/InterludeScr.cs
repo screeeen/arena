@@ -54,37 +54,7 @@ public class InterludeScr : MonoBehaviour
 				} 
 				yield return new WaitForSeconds (2f);
 
-		}
-
-//		public void removeMe ()
-//		{
-//				StartCoroutine ("runOut");
-//		}
-//
-//		public IEnumerator runOut ()
-//		{
-//				if (boxRect != null) {
-////			if (boxRect.height < 200f) {
-////				boxRect.height += 160f;
-////			}
-//			
-//						if (boxRect.width >= globales.SCREENW) {
-//								boxRect.x += 80f;
-//						}
-//
-//						if (boxRect.x < globales.SCREENW) {
-//								boxRect.x += 30f;
-//
-//								yield return new WaitForSeconds (2f);
-//						} else {
-//
-//								Destroy (gameObject);
-//						}
-//
-//				} 
-//		
-//		}
-	
+		}	
 	
 		void OnGUI ()
 		{
@@ -115,7 +85,6 @@ public class InterludeScr : MonoBehaviour
 
 				//LEFT SIDE
 				messageRect.x = dimensions.x - 40;
-		
 				GUI.Label (messageRect, "STAGE: " + globales.currentStage, marqueeBigSt);
 
 				//RIGHT SIDE

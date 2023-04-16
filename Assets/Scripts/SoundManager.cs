@@ -154,8 +154,7 @@ public class SoundManager : MonoBehaviour
 		public static void playDing ()
 		{
 				if (soundPlayer.clip != dingSnd) {
-						soundPlayer.pitch = 3f;
-//			print ("BSSSSS");
+						soundPlayer.pitch = 5f;
 						soundPlayer.PlayOneShot (dingSnd);
 			
 				}
@@ -166,7 +165,6 @@ public class SoundManager : MonoBehaviour
 		{
 				if (soundPlayer.clip != nBulletSnd) {
 						soundPlayer.pitch = Random.Range (0.9f, 1.1f);
-//						print ("BSSSSS");
 						soundPlayer.PlayOneShot (nBulletSnd);
 
 				}

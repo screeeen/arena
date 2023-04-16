@@ -10,9 +10,7 @@ public class globales : MonoBehaviour
 {
 
 	[SerializeField]
-	int
-		frameRate = 30; //for android check!
-	public static bool goldenVersion;
+	int frameRate = 30; //for android check!
 	public static int kills;
 	public static int maxKills1;
 	public static int lastKills;
@@ -21,8 +19,7 @@ public class globales : MonoBehaviour
 	public static int numberOfGames;
 	public static int milisecsEnemyDestroyed;
 	public static int dustLevel;
-	public static int currentMap;
-	public static int totalNumberMaps; 
+	// public static int currentMap; // MAPAS? //HACK
 	public static int currentStage;
 	public static int level;
 
@@ -40,9 +37,9 @@ public class globales : MonoBehaviour
 
 	public static bool isLandscape;
 	public static bool ISWIDE ;
-	public static bool showAdApple;
-	public static bool showAdmob;
-	public static bool loadedAdmob;
+	
+	
+	
 	public static bool shaking = false;
 	public static bool showNewRecord = false;
 	public static bool showNewLevel = false;
@@ -51,10 +48,8 @@ public class globales : MonoBehaviour
 	public static bool failedTutorial = false;
 	public static bool sfxSwitch = false; //inverted
 	public static bool musicSwitch = false; //inverted
-	public static bool tutorialIsFinished = false;
-	public static bool showUnity;
-
-	private static Soomla.Store.EventHandler handler;
+	
+	// private static Soomla.Store.EventHandler handler;
 
 	public static Vector2 SCREENVECTOR;
 	public static Vector2 SCREENSCALE;
@@ -62,12 +57,6 @@ public class globales : MonoBehaviour
 	public static string OLEADA;
 
 	static List<Matrix4x4> stack;
-
-	//ADVERTISING
-//		public GameObject iAD;
-//		public GameObject GoogleMob;
-//		public GameObject ADbanner;
-	
 
 	public void Awake ()
 	{
@@ -78,16 +67,6 @@ public class globales : MonoBehaviour
 			numberOfGames = 0;
 		}
 		milisecsEnemyDestroyed = 30;
-		tutorial = false;
-		goldenVersion = false;
-		showUnity = true;
-
-// 		#if UNITY_IOS || UNITY_ANDROID
-// //				iAD.SetActive (true);
-// //				GoogleMob.SetActive (true);
-// //				ADbanner.SetActive (true);
-// //				Advertisement.Initialize ("56260", true);
-// 		#endif
 	}
 
 	static public void BeginGUI ()
@@ -120,10 +99,8 @@ public class globales : MonoBehaviour
 	
 	public static void setCamera ()
 	{
-
 		globales.camHeight = Camera.main.orthographicSize * 2f;   
 		globales.camWidth = camHeight * Camera.main.aspect;
-		
 		
 		// Calculations assume map is position at the origin
 		globales.minX = - camWidth / 2;
@@ -144,97 +121,30 @@ public class globales : MonoBehaviour
 	void Start ()
 	{
 		soundCheck ();
-
 		setCamera ();
-				
-		dustLevel = 1;
-		showAdApple = false;
-		handler = new Soomla.Store.EventHandler ();//for android check!
-		Soomla.Store.StoreEvents.OnSoomlaStoreInitialized += onSoomlaStoreInitialized;
-		Soomla.Store.SoomlaStore.Initialize (new Soomla.Store.GameAssets ()); //for android check!
+		dustLevel = 100;
 	}
 
-	public void onSoomlaStoreInitialized ()
-	{
-
-		print ("Soomla inicializada");
-		print ("GET VALUE STORE " + Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_GOOD.ItemId));
-		
-		int val = Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_GOOD.ItemId);
-		
-		if (val < 1) {
-			globales.goldenVersion = false;
-			print ("IS PLATA");
-		} else {
-			globales.goldenVersion = true;
-			print ("IS GOLDEN");
-
-		}
-		
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
-
-		#if UNITY_EDITOR || UNITY_ANDROID
-
+		//DEBUG
+		#if UNITY_EDITOR
 				if (Input.GetKeyDown (KeyCode.A)) {
 //						deleteData ();
-						Camera.main.orthographicSize = 9;
+						// Camera.main.orthographicSize = 9;
 //						cameraScript.initOrthoSize = 9;
 //						Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-//						deleteData ();
-						setCamera ();
-						if (ISWIDE) {
-								ISWIDE = false;
-//								Debug.Log ("NOT IS WIDE");
-						} 
-						if (!ISWIDE) {
-								ISWIDE = true;
-//								Debug.Log ("YES IS WIDE");
-
-						}
-						GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().levelUpgrade ();
-
+// 						setCamera ();
+// 						if (ISWIDE) {
+// 								ISWIDE = false;
+// //								Debug.Log ("NOT IS WIDE");
+// 						} 
+// 						if (!ISWIDE) {
+// 								ISWIDE = true;
+// 						}
+						// GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().levelUpgrade ();
 				}
-
-		#endif
-
-
-
-		#if (UNITY_IOS ||UNITY_ANDROID)  && !UNITY_EDITOR
-
-				//CHANGE MIMIC
-		if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-			Camera.main.orthographicSize = 9;
-			cameraScript.initOrthoSize = 9;
-//			Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-			HEIGHT = 1536;
-			WIDTH = 2048;
-			setCamera();
-			ISWIDE = false;
-			if(GameObject.FindGameObjectWithTag ("agujerosParent")){
-				print ("FOUND AGUJ H");
-			GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.8f, 1f));
-			}
-			setPosAgujeros();
-
-						}
-		if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-			Camera.main.orthographicSize = 6;
-			cameraScript.initOrthoSize = 6;
-//			Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-			HEIGHT = 2048;
-			WIDTH = 1536;
-			setCamera();
-			ISWIDE = true;
-			if(GameObject.FindGameObjectWithTag ("agujerosParent")){
-//				print ("FOUND AGUJ V");
-			GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.4f, 1f));
-			}
-			setPosAgujeros();			
-		}
 		#endif
 
 	}
@@ -270,27 +180,23 @@ public class globales : MonoBehaviour
 
 	public static Vector2 getRandomPos ()
 	{
-
 		float rx = Random.Range (0.1f, 0.9f);
 		float ry = Random.Range (0.1f, 0.9f);
 
 		Vector2 rPos = (Vector2)Camera.main.ViewportToWorldPoint (new Vector3 (rx, ry, 0));
 		return rPos;
-
 	}
 
 	public static Vector3 getRandomRot ()
-	{
-		
+	{	
 		float rx = Random.Range (0.1f, 0.9f);
 		float ry = Random.Range (0.1f, 0.9f);
 		float rz = Random.Range (0f, 360f);
 		
 		Vector3 rRot = new Vector3 (rx, ry, rz);
-
 		return rRot;
-		
 	}
+
 	public static void setCameraLevelColor ()
 	{
 		Color32 r = Camera.main.backgroundColor;
@@ -387,22 +293,12 @@ public class globales : MonoBehaviour
 		SetBool ("sound", sfxSwitch);
 		SetBool ("music", musicSwitch);
 
-
-
-
 		print ("SAVE");
 		Debug.Log ("-- maxKills: " + maxKills1);
 		Debug.Log ("-- save number of games " + globales.numberOfGames);
 		Debug.Log ("-- currentWeapon: " + WeaponsController.currentWeapon);
 		Debug.Log ("-- sound : " + globales.sfxSwitch);
 		Debug.Log ("-- music : " + globales.musicSwitch);
-
-
-
-
-
-
-
 	} 
 
 	void getData ()
@@ -504,7 +400,6 @@ public class globales : MonoBehaviour
 	//herramientas para grabar tipo bool
 	static void  SetBool (string name, bool value)
 	{
-		
 		PlayerPrefs.SetInt (name, value ? 1 : 0);
 	}
 	

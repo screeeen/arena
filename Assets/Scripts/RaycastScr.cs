@@ -45,7 +45,6 @@ public class RaycastScr : MonoBehaviour
 
 				if (Physics.Raycast (transform.position, transform.right * length, out hit)) {
 		
-						print ("HITII");
 						switch (hit.transform.gameObject.tag) {
 						case "arana":
 								if (!killed) {

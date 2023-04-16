@@ -53,6 +53,29 @@ public class playerMovement : MonoBehaviour
 
 						}
 				}
+
+				//BOUNDARIES
+				cameraScript _cameraScript = Camera.main.GetComponent<cameraScript> ();
+
+				if (transform.position.x > globales.maxX) {
+						Vector3 p = new Vector3 (globales.minX, transform.position.y, 0);
+						transform.position = p;
+				} 
+
+				if (transform.position.x < globales.minX) {
+						Vector3 p = new Vector3 (globales.maxX, transform.position.y, 0);
+						transform.position = p;
+
+				}
+
+				if (transform.position.y > globales.minY) {
+						Vector3 p = new Vector3 (transform.position.x, globales.maxY, 0);
+						transform.position = p;
+				}
+				if (transform.position.y < globales.maxY) {
+						Vector3 p = new Vector3 (transform.position.x, globales.minY, 0);
+						transform.position = p;
+				}
 		}
 
 
@@ -138,8 +161,9 @@ public class playerMovement : MonoBehaviour
 		IEnumerator moveCoin (GameObject coin)
 		{
 				Vector2 target = Camera.main.ScreenToWorldPoint (new Vector2 (globales.SCREENW / 2, -globales.SCREENH));
+				float speedCoin = 20f;
 				while (coin && !(coin.transform.position.Equals (target))) {
-						Vector2 mov = Vector2.MoveTowards (coin.transform.position, target, Time.deltaTime * 8f);
+						Vector2 mov = Vector2.MoveTowards (coin.transform.position, target, Time.deltaTime * speedCoin);
 						coin.transform.position = mov;
 						if (coin.transform.localScale.x < 2) {
 								coin.transform.localScale = coin.transform.localScale * 1.1f;

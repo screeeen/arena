@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class AudioToggle : MonoBehaviour
 {
-
-
 		Toggle tog;
 
 		// Use this for initialization

@@ -20,7 +20,7 @@ public class weaponRoom : MonoBehaviour
 		public GUIStyle gearWordSt = new GUIStyle ();
 		public  GUIStyle weaponsRoomSt = new GUIStyle ();
 		public GUIStyle lowBarButtonSt = new GUIStyle ();
-		public GUIStyle lowBarPlaySt = new GUIStyle ();
+		public GUIStyle lowBarSt = new GUIStyle ();
 		public GUIStyle levelSt = new GUIStyle ();
 		public GUIStyle titleSt = new GUIStyle ();
 
@@ -78,7 +78,7 @@ public class weaponRoom : MonoBehaviour
 		{
 				gearWordSt.fontSize = 22;//(int)globales.SCREENW / 56;
 				weaponsRoomSt.fontSize = 22;//(int)globales.SCREENW / 56;
-				lowBarButtonSt.fontSize = lowBarPlaySt.fontSize = 21;//(int)globales.SCREENW / 58;
+				// lowBarButtonSt.fontSize = lowBarPlaySt.fontSize = 21;//(int)globales.SCREENW / 58;
 
 				if (globales.ISWIDE) {
 						titleSt.fontSize = (int)globales.SCREENW / 20;
@@ -266,15 +266,8 @@ public class weaponRoom : MonoBehaviour
 						Rect rectRetry = new Rect (pos.x, pos.y, size.x * 2 * globales.SCREENSCALE.x, size.y * 2 * globales.SCREENSCALE.y);
 						Rect rectWinners = new Rect (pos.x + size.x * -1, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 						Rect rectStore = new Rect (pos.x + size.x * -2, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
-
-
-						if (GUI.Button (rectWinners, "◊", lowBarPlaySt)) {
-								SoundManager.playLongButton ();
-								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-								gameControlObj.GetComponent<gameControl> ().callScoreTable ();
-						}
 			
-						if (GUI.Button (rectRetry, "PLAY", lowBarPlaySt)) {
+						if (GUI.Button (rectRetry, "PLAY", lowBarSt)) {
 				
 								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 								gameControl.currentState = (gameControl.State)4;
@@ -288,7 +281,7 @@ public class weaponRoom : MonoBehaviour
 						}
 
 			
-						if (GUI.Button (rectStore, "GEAR", lowBarPlaySt)) {
+						if (GUI.Button (rectStore, "GEAR", lowBarSt)) {
 								SoundManager.playLongButton ();
 				
 								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
@@ -311,41 +304,6 @@ public class weaponRoom : MonoBehaviour
 				GUI.EndGroup ();
 				globales.EndGUI ();
 		}
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //				// black box in background
 //				GUI.Box (boxRect, "", boxStyle);

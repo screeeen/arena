@@ -12,6 +12,7 @@ public class BackgroundScript : MonoBehaviour
 		{
 				fillBg ();
 		}
+		
 		public void fillBg ()
 		{
 

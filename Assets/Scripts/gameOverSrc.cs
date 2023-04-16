@@ -13,7 +13,7 @@ public class gameOverSrc : MonoBehaviour
 	public GUIStyle marqueeSt = new GUIStyle ();
 	public GUIStyle marqueeStLeft = new GUIStyle ();
 	public GUIStyle lowBarSt = new GUIStyle ();
-	public GUIStyle lowBarPlaySt = new GUIStyle ();
+	// public GUIStyle lowBarPlaySt = new GUIStyle ();
 	public GUIStyle storeButtonSt = new GUIStyle ();
 
 	public static Rect bulletsHUD;
@@ -66,7 +66,7 @@ public class gameOverSrc : MonoBehaviour
 		killsText = globales.kills.ToString ();
 		stageTimeText = globales.lastKills.ToString ();
 
-		globales.setCamera ();
+		// globales.setCamera ();
 		startPos = new Vector2 (0, -globales.SCREENH);
 		endPos = Vector2.zero;
 		transform.position = startPos;
@@ -76,8 +76,6 @@ public class gameOverSrc : MonoBehaviour
 		counterM = 0;
 		counterC = 0;
 		counterDeathColor = 10;
-
-		lowBarSt.fontSize = lowBarPlaySt.fontSize = 21;//(int)globales.SCREENH / 58;
 
 	}
 
@@ -103,11 +101,10 @@ public class gameOverSrc : MonoBehaviour
 
 	}
 
-	//enseña publicidad
+	
 	public IEnumerator Show ()
 	{
 
-//				print ("KILLS: " + globales.kills);
 		if (Camera.main.backgroundColor != cc && globales.kills > 10) {
 
 			Color backColor = Camera.main.backgroundColor;
@@ -131,7 +128,7 @@ public class gameOverSrc : MonoBehaviour
 
 				}
 
-//								SoundManager.soundPlayer.pitch = counterK % 10;
+				SoundManager.soundPlayer.pitch = counterK % 10;
 				yield return new WaitForSeconds (0.001f);
 			}
 
@@ -140,67 +137,7 @@ public class gameOverSrc : MonoBehaviour
 				yield return new WaitForSeconds (0.4f);
 			}
 		}
-				
-
-		//TIME FOR ADS
-		if (!globales.goldenVersion) {
-
-			yield return new WaitForSeconds (1f);
-		}
-
-		// ADS CODE WHEN IS FREEMIUM
-		if (!globales.goldenVersion) {
-			if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_ITEM_ID) <= 0) {
-
-				// ADS SHOWING
-				if (!globales.goldenVersion && globales.numberOfGames > 3) {
-						
-					#if UNITY_IPHONE
-						
-										bool isPad = false;
-										if ((UnityEngine.iOS.Device.generation.ToString ()).IndexOf ("iPad") > -1) {
-							
-												print (" AdInterstitial  loaded " + ADInterstitial.fullscreenAd.loaded + "  show apple " + globales.showAdApple + " show unity " + globales.showUnity);
-							
-												isPad = true;
-												//IAD
-												if (ADInterstitial.fullscreenAd.loaded && globales.showAdApple && globales.numberOfGames % 3 == 0) {
-														ADInterstitial.fullscreenAd.Show ();
-														globales.showAdApple = false;
-												}
-							
-												//UNITYAD
-												if (!ADInterstitial.fullscreenAd.loaded && globales.numberOfGames % 3 == 0) {
-														if (Advertisement.isReady () && !globales.showUnity && gameControl.currentState == gameControl.State.GAMEOVER) {
-									
-																Advertisement.Show ();
-																globales.showUnity = true;
-																globales.showAdApple = false;
-														}
-												}
-										}
-						
-										if (!isPad && globales.numberOfGames % 3 == 0) {
-												if (Advertisement.isReady () && !globales.showUnity && gameControl.currentState == gameControl.State.GAMEOVER) {
-								
-														Advertisement.Show ();
-														globales.showUnity = true;
-												}
-										}
-					#endif
-						
-					#if UNITY_ANDROID
-										//UNITY ADS
-										if (globales.numberOfGames % 3 == 0) {
-												if (Advertisement.isReady () && !globales.showUnity) {
-														Advertisement.Show ();
-														globales.showUnity = true;
-												}
-										}
-					#endif
-				}
-			}
-		}
+		
 		yield return null;
 	}
 
@@ -249,9 +186,6 @@ public class gameOverSrc : MonoBehaviour
 		GUI.color = Color.white;
 		GUI.Label (new Rect (messageRect.x, messageRect.y + marqueeSt.fontSize * 1.1f, messageRect.width, messageRect.height), "<size=18>LEVEL: " + globales.level + "!</size>", marqueeSt);
 
-
-
-		
 		//NEW RECORD 
 //				globales.showNewRecord = true;
 		if (globales.showNewRecord) {
@@ -308,34 +242,6 @@ public class gameOverSrc : MonoBehaviour
 		GUI.color = Color.white;
 		GUI.Label (new Rect (messageMax.x, messageMax.y + marqueeSt.fontSize, messageMax.width, messageMax.height), coinsText, marqueeSt);
 
-
-//				 //NO ADS PROMPT 
-		if (!globales.goldenVersion) {
-			Vector2 sizeButton = new Vector2 (globales.SCREENW, globales.SCREENH / 14);
-			
-			// Soomla.Store.PurchasableVirtualItem pviRayos = Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads") as Soomla.Store.PurchasableVirtualItem;
-			// Soomla.Store.MarketItem mi = (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem) as Soomla.Store.MarketItem;
-				
-			if (!WeaponsController.bombaPurchased [1]) {
-				float bPos = 2.8f;
-				float bSize = 1.8f;
-
-				if (globales.ISWIDE) {
-					bPos = 2.4f;
-					bSize = 1.1f;
-				} else {
-					bPos = 2.8f;
-					bSize = 1.8f;
-				}
-				
-				// if (GUI.Button (new Rect (0, messageMax.y + marqueeSt.fontSize * bPos, sizeButton.x * globales.SCREENSCALE.x, (sizeButton.y * bSize) * globales.SCREENSCALE.y), "REMOVE ADS AND GET 1000 COINS\nONLY " + mi.MarketPriceAndCurrency, storeButtonSt)) {
-					// SoundManager.playShortButton ();
-					// Soomla.Store.StoreInventory.BuyItem (Soomla.Store.GameAssets.RAYOS_ITEM_ID as string);//Soomla.Store.VirtualGood
-				// }
-				
-			} 
-		}
-
 		// LOW BAR BUTTONS
 		GUI.color = Color.white;
 		var textDimensions = GUI.skin.button.CalcSize (new GUIContent (lowBarSt.active.background));
@@ -347,28 +253,11 @@ public class gameOverSrc : MonoBehaviour
 		Rect rectStore = new Rect (pos.x + size.x * -2, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 		Rect rectRetry = new Rect (pos.x, pos.y, size.x * 2 * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 
-
-
-		if (GUI.Button (rectWinners, "◊", lowBarSt)) {
-			SoundManager.playLongButton ();
-			#if UNITY_ANDROID
-
-						Social.localUser.Authenticate ((bool success) => {
-								print (" auth sucess");	
-						});
-#endif
-			gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-			gameControlObj.GetComponent<gameControl> ().callScoreTable ();
-		}
-
-		if (GUI.Button (rectRetry, "PLAY", lowBarPlaySt) && counterK == globales.kills) {
-
+		if (GUI.Button (rectRetry, "PLAY", lowBarSt) && counterK == globales.kills) {
 			gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 			gameControl.currentState = (gameControl.State)4;
 			gameControlObj.GetComponent<gameControl> ().toGame ();
-			#if UNITY_IOS || UNITY_ANDROID
-//						ADBanner.banner.visible = false;
-#endif
+
 			globales.showNewRecord = false;
 			globales.showNewLevel = false;
 
@@ -381,32 +270,12 @@ public class gameOverSrc : MonoBehaviour
 			gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 			gameControlObj.GetComponent<gameControl> ().toStoreRoom ();
 			gameControl.currentState = (gameControl.State)7;
-			#if UNITY_IOS || UNITY_ANDROID
-//						ADBanner.banner.visible = false;
-#endif
+
 			globales.showNewRecord = false;
 			globales.showNewLevel = false;
 
 			Destroy (gameObject);
 		}
-	}
-
-	//soundPlayer = GetComponent<AudioSource> ();
-
-
-	int getFontsize ()
-	{
-		int f = (int)globales.SCREENH / 22;
-		if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-			f = (int)globales.SCREENH / 22;
-			
-		}
-		if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-			f = (int)globales.SCREENH / 10;
-		}
-
-		return f;
-		
 	}
 
 	public static bool isReady ()

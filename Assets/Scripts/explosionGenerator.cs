@@ -19,6 +19,7 @@ public class explosionGenerator : MonoBehaviour
 						GameObject g = Instantiate (explosion, randomPos, Quaternion.identity) as GameObject;
 
 				}
+				// Destroy (gameObject);
 		}
 	
 

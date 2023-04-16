@@ -291,20 +291,17 @@ public class gameControl : MonoBehaviour
 	{
 		setLastKills ();
 		currentState = State.INGAME;
-		globales.showUnity = false;	
+		
 
 		
 		//RESETS 
 		// CoinsManager.earnedCoins = 0; // for android check!
 		stageTime = 0;
 		bool start = false;
-		Debug.Log("satrt ?");
 		naveProxyController.gizmosReady = false;
-		// WeaponsController.updateWeapons ();// for android check!
 		GetComponent<HUD> ().Start ();
 		globales.resetCameraColor ();
-		Debug.Log("start");
-		Debug.Log(start);
+		// globales.setCamera ();
 
 
 		while (!start) {
@@ -615,7 +612,6 @@ public class gameControl : MonoBehaviour
 		GetComponent<SpriteRenderer> ().enabled = false;
 		
 		setScores ();
-		globales.showAdApple = true;
 		toGameOverRoom ();
 		yield return null;
 		
@@ -641,32 +637,11 @@ public class gameControl : MonoBehaviour
 		
 	}
 
-// 	IEnumerator runTutorial ()
-// 	{
-		
-// // 		yield return new WaitForSeconds (0.5f);
-// // 		print (_enemyController);
-// // 		if (_enemyController && !globales.tutorialEnemiesReady) {
-// // 			_enemyController.GetComponent<enemyController> ().createSpider ();
-// // 			_enemyController.GetComponent<enemyController> ().createSpider ();
-// // 			_enemyController.GetComponent<enemyController> ().createSpider ();
-// // 			_enemyController.GetComponent<enemyController> ().createSpider ();
-// // 			_enemyController.GetComponent<enemyController> ().createSnake ();
-// // 			yield return new WaitForSeconds (8f);
-
-// // 			globales.tutorialEnemiesReady = true;
-// // 		}
-
-// // //				yield return new WaitForSeconds (8f);
-// // 		yield return null;
-		
-// 	}
-
 	IEnumerator ChangeLevelWait (float seconds)
 	{
 
 		for (float timer = 3; timer >= 0; timer -= Time.deltaTime) {
-//						print ("RUTINA");
+			print ("RUTINA change level wait");
 			yield return 0;				
 		}
 		yield return new WaitForSeconds (0.1f);
@@ -678,13 +653,11 @@ public class gameControl : MonoBehaviour
 	public void levelUpgrade ()
 	{
 		//LEVEL UPGRADE
-
-
 		if (globales.kills / factorLevel > globales.level) {
 			globales.showNewLevel = true;
 			globales.level = globales.kills / factorLevel;
 
-			StartCoroutine ("ChangeLevelWait", 2f);
+			StartCoroutine ("ChangeLevelWait", 2f); // HACK se queda todo el rato corriendo esto?
 			factorLevel *= 2;
 			globales.setCameraLevelColor ();
 			//						return;
@@ -696,9 +669,7 @@ public class gameControl : MonoBehaviour
 		if (globales.kills > globales.maxKills1) {
 			globales.maxKills1 = globales.kills;
 			globales.showNewRecord = true;
-			
 		}
-		
 	}
 
 		

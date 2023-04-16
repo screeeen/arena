@@ -15,14 +15,12 @@ public class CoinsManager : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				coins = Soomla.Store.StoreInventory.GetItemBalance ("currency_coin");
+				coins = 0; //Soomla.Store.StoreInventory.GetItemBalance ("currency_coin"); //HACK
 		}
 
 		public static void substractCoins (int coinsToSubstract)
 		{
 //				coins = coins - coinsToSubstract;
-
-
 		}
 
 		public static void addCoins (int coinsToAdd)
@@ -30,8 +28,8 @@ public class CoinsManager : MonoBehaviour
 //				coins = coins + coinsToAdd;
 				isAddingCoins = true;
 				earnedCoins = earnedCoins + coinsToAdd;
-				Soomla.Store.StoreInventory.GiveItem ("currency_coin", coinsToAdd);
-				coins = Soomla.Store.StoreInventory.GetItemBalance ("currency_coin");
+				// Soomla.Store.StoreInventory.GiveItem ("currency_coin", coinsToAdd);
+				// coins = //Soomla.Store.StoreInventory.GetItemBalance ("currency_coin");//HACK
 
 		}
 

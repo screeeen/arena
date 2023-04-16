@@ -4,15 +4,14 @@ using UnityEngine.Advertisements;
 
 public class StoreMenu : MonoBehaviour
 {
-//		public GoogleAnalyticsV3 googleAnalytics;
-
+ 
 		public GUIStyle labelSt = new GUIStyle ();
 		public GUIStyle storeButtonSt = new GUIStyle ();
 		public GUIStyle storeButtonWinSt = new GUIStyle ();
 
 		public  GUIStyle weaponsRackSt = new GUIStyle ();
 		public  GUIStyle lowBarSt = new GUIStyle ();
-		public GUIStyle lowBarPlaySt = new GUIStyle ();
+		// public GUIStyle lowBarPlaySt = new GUIStyle ();
 		public  GUIStyle gearWordSt = new GUIStyle ();
 		public GUIStyle titleSt = new GUIStyle ();
 
@@ -61,8 +60,6 @@ public class StoreMenu : MonoBehaviour
 
 		void Awake ()
 		{
-
-
 				products = new ArrayList ();
 				itemsToBuy = new ArrayList ();
 		
@@ -76,8 +73,6 @@ public class StoreMenu : MonoBehaviour
 
 				iconGfx = new ArrayList ();
 				iconBombaGfx = new ArrayList ();
-//				UnityAds.setVideoCompletedDelegate (UnityAdsVideoCompleted);
-
 		}
 
 		void Start ()
@@ -91,13 +86,10 @@ public class StoreMenu : MonoBehaviour
 				iconBombaGfx.Add (iconBomba);
 				iconBombaGfx.Add (iconRayos);
 
-				fillProducts ();
+				// fillProducts ();
 				WeaponsController.updateWeapons ();
 
-
 				setSizes ();
-//				googleAnalytics.LogScreen ("Store");
-
 		}
 
 		void setSizes ()
@@ -106,7 +98,7 @@ public class StoreMenu : MonoBehaviour
 				storeButtonSt.fontSize = 21;//(int)globales.SCREENW / 64;
 				storeButtonWinSt.fontSize = 12;//(int)globales.SCREENW / 64;
 
-				lowBarSt.fontSize = lowBarPlaySt.fontSize = 21;//(int)globales.SCREENW / 64;
+				// lowBarSt.fontSize = lowBarPlaySt.fontSize = 21;//(int)globales.SCREENW / 64;
 
 				if (globales.ISWIDE) {
 						weaponsRackSt.fontSize = (int)globales.SCREENW / 60;//(int)globales.SCREENW / 64;
@@ -120,60 +112,54 @@ public class StoreMenu : MonoBehaviour
 				}
 		}
 
-		void fillProducts ()
-		{
-
-				
-				products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Laser"));
-				products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Tway"));
-				products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Circle"));
-				products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Moire"));
+		// void fillProducts ()
+		// {
+		// 		products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Laser"));
+		// 		products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Tway"));
+		// 		products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Circle"));
+		// 		products.Add ((Soomla.Store.PurchasableVirtualItem)Soomla.Store.StoreInfo.GetItemByItemId ("com.UndergroundGames.Wormos.Moire"));
 
 		
-				//Items to buy
-				itemsToBuy.Add (Soomla.Store.GameAssets.LASER_ITEM_ID);
-				itemsToBuy.Add (Soomla.Store.GameAssets.TWAY_ITEM_ID);
-				itemsToBuy.Add (Soomla.Store.GameAssets.CIRCLE_ITEM_ID);
-				itemsToBuy.Add (Soomla.Store.GameAssets.MOIRE_ITEM_ID);
+		// 		//Items to buy
+		// 		itemsToBuy.Add (Soomla.Store.GameAssets.LASER_ITEM_ID);
+		// 		itemsToBuy.Add (Soomla.Store.GameAssets.TWAY_ITEM_ID);
+		// 		itemsToBuy.Add (Soomla.Store.GameAssets.CIRCLE_ITEM_ID);
+		// 		itemsToBuy.Add (Soomla.Store.GameAssets.MOIRE_ITEM_ID);
 
 
-				// COINS ##########################################################
-				if (!globales.goldenVersion) {
-						productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.2500_pack"));
-						productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.10000_pack"));
-						productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.17500_pack"));
-						productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.40000_pack"));
-						productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.100000_pack"));
+		// 		// COINS ##########################################################
+		// 		if (!globales.goldenVersion) {
+		// 				productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.2500_pack"));
+		// 				productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.10000_pack"));
+		// 				productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.17500_pack"));
+		// 				productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.40000_pack"));
+		// 				productPacks.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.100000_pack"));
 
 		
-						miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.2500_pack").PurchaseType).MarketItem);
-						miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.10000_pack").PurchaseType).MarketItem);
-						miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.17500_pack").PurchaseType).MarketItem);
-						miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.40000_pack").PurchaseType).MarketItem);
-						miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.100000_pack").PurchaseType).MarketItem);
+		// 				miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.2500_pack").PurchaseType).MarketItem);
+		// 				miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.10000_pack").PurchaseType).MarketItem);
+		// 				miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.17500_pack").PurchaseType).MarketItem);
+		// 				miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.40000_pack").PurchaseType).MarketItem);
+		// 				miiPacks.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("com.UndergroundGames.Wormos.100000_pack").PurchaseType).MarketItem);
 
-						//packs to buy
-						packsToBuy.Add (Soomla.Store.GameAssets.TWOFIFTY_PACK_PRODUCT_ID);
-						packsToBuy.Add (Soomla.Store.GameAssets.TEN_PACK_PRODUCT_ID);
-						packsToBuy.Add (Soomla.Store.GameAssets.SEVENTEENFIFTY_PACK_PRODUCT_ID);
-//				packsToBuy.Add (Soomla.Store.GameAssets.FORTY_PACK_PRODUCT_ID);
-//				packsToBuy.Add (Soomla.Store.GameAssets.HUNDRED_PACK_PRODUCT_ID);
+		// 				//packs to buy
+		// 				packsToBuy.Add (Soomla.Store.GameAssets.TWOFIFTY_PACK_PRODUCT_ID);
+		// 				packsToBuy.Add (Soomla.Store.GameAssets.TEN_PACK_PRODUCT_ID);
+		// 				packsToBuy.Add (Soomla.Store.GameAssets.SEVENTEENFIFTY_PACK_PRODUCT_ID);
+		// 				packsToBuy.Add (Soomla.Store.GameAssets.FORTY_PACK_PRODUCT_ID);
+		// 				packsToBuy.Add (Soomla.Store.GameAssets.HUNDRED_PACK_PRODUCT_ID);
 				
-
-
-						//ITEMS FOR CASH
-						unlockableItems.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads"));
-						unlockableMiis.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem);
-						unlockablesToBuy.Add (Soomla.Store.GameAssets.RAYOS_ITEM_ID);         
-				}
-		}
+		// 				//ITEMS FOR CASH
+		// 				unlockableItems.Add (Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads"));
+		// 				unlockableMiis.Add (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem);
+		// 				unlockablesToBuy.Add (Soomla.Store.GameAssets.RAYOS_ITEM_ID);         
+		// 		}
+		// }
 	
 		void OnGUI ()
 		{
 		
 				globales.BeginGUI ();
-
-
 				//TITLE
 				var titleD = GUI.skin.button.CalcSize (new GUIContent ("GEAR"));
 		
@@ -190,103 +176,30 @@ public class StoreMenu : MonoBehaviour
 				GUI.Label (titleRect, "GEAR", titleSt);
 
 
-				// LEFT SIDE: WEAPONS##################
-				var textDimensions = GUI.skin.button.CalcSize (new GUIContent (storeButtonSt.active.background));
-				if (!globales.goldenVersion) {
+				// LEFT SIDE: WEAPONS
+				var textDimensions = GUI.skin.button.CalcSize (new GUIContent (storeButtonSt.active.background));						
 						textDimensions = GUI.skin.button.CalcSize (new GUIContent (storeButtonSt.active.background));
-						#region POSITIONS
-						if (globales.ISWIDE) {
-								sizeButton = new Vector2 (globales.SCREENW / 4, globales.SCREENH / 12);
-								posButton = new Vector2 (5 + sizeButton.x * globales.SCREENSCALE.x, globales.SCREENH / 7);//transform.position;//Camera.main.WorldToScreenPoint (transform.position);
-			
-								sizeBox = new Vector2 (globales.SCREENW / 3, globales.SCREENH / 12);
-								posBox = new Vector2 (5, globales.SCREENH / 7);
-			
-			
-						} else {
-			
-								sizeButton = new Vector2 (globales.SCREENW / 4, globales.SCREENH / 12);
-								posButton = new Vector2 (5 + sizeButton.x * globales.SCREENSCALE.x, globales.SCREENH / 11);
-			
-								sizeBox = new Vector2 (globales.SCREENW / 2, globales.SCREENH / 12);
-								posBox = new Vector2 (5, globales.SCREENH / 11);
-			
-						}
-						#endregion
 
-						for (int i = 0; i<products.Count; i++) {
-						
-								Soomla.Store.PurchasableVirtualItem pvi = products [i] as Soomla.Store.PurchasableVirtualItem;  
-								Soomla.Store.PurchaseWithVirtualItem pvi2 = (Soomla.Store.PurchaseWithVirtualItem)pvi.PurchaseType;
-
-								if (!WeaponsController.weaponPurchased [i + 1]) {
-
-
-										if (GUI.Button (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), pvi2.Amount + "\n <size=8> COINS</size>", storeButtonSt)) {
-												SoundManager.playShortButton ();
-
-												Soomla.Store.StoreInventory.BuyItem (itemsToBuy [i]as string);
-												WeaponsController.currentWeapon = (WeaponsController.WEAPONS)i;
-												print (WeaponsController.currentWeapon);
-										}
-								} else {
-										#region LABELS
-										if (globales.ISWIDE) {
-												storeButtonSt.fontSize = 21;
-												storeButtonWinSt.fontSize = 21;
-
-
-										} else {
-												storeButtonSt.fontSize = 12;
-												storeButtonWinSt.fontSize = 12;
-
-										}
-										#endregion
-										
-										GUI.Label (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), "AVAILABLE!", storeButtonSt);
-								}
-
-								Rect labelRect = new Rect (posBox.x + sizeBox.x / 20, posButton.y + sizeBox.y * i, (sizeBox.x / 2.4f) * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y);
-								GUI.color = Color.gray;
-								GUI.Label (new Rect (labelRect.x, labelRect.y + offsetLetterShadow, labelRect.width, labelRect.height), "\n<color=black>" + pvi.Name.ToString () + "</color>\n " + pvi.Description.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
-								GUI.color = Color.white;
-								GUI.Label (labelRect, "\n<color=white>" + pvi.Name.ToString () + "</color>\n " + pvi.Description.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
-				
-						}
-				} else {
-						// PREMIUM
-						textDimensions = GUI.skin.button.CalcSize (new GUIContent (storeButtonSt.active.background));
-						#region POSITIONS
 						if (globales.ISWIDE) {
 								sizeButton = new Vector2 (globales.SCREENW / 2, globales.SCREENH / 12);
 								posButton = new Vector2 (5 + sizeButton.x * globales.SCREENSCALE.x, globales.SCREENH / 7);//transform.position;//Camera.main.WorldToScreenPoint (transform.position);
 				
 								sizeBox = new Vector2 (globales.SCREENW, globales.SCREENH / 12);
 								posBox = new Vector2 (5, globales.SCREENH / 7);
-				
-				
 						} else {
-				
 								sizeButton = new Vector2 (globales.SCREENW / 2, globales.SCREENH / 12);
 								posButton = new Vector2 (5 + sizeButton.x * globales.SCREENSCALE.x, globales.SCREENH / 11);
 				
 								sizeBox = new Vector2 (globales.SCREENW, globales.SCREENH / 12);
 								posBox = new Vector2 (5, globales.SCREENH / 11);
-				
 						}
-						#endregion
-						for (int i = 0; i<products.Count; i++) {
-				
-								Soomla.Store.PurchasableVirtualItem pvi = products [i] as Soomla.Store.PurchasableVirtualItem;  
-								Soomla.Store.PurchaseWithVirtualItem pvi2 = (Soomla.Store.PurchaseWithVirtualItem)pvi.PurchaseType;
 
+						for (int i = 0; i < products.Count; i++) {
 								if (!WeaponsController.weaponPurchased [i + 1]) {
 					
-					
-										if (GUI.Button (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), pvi2.Amount + "\n <size=8> COINS</size>", storeButtonSt)) {
+										if (GUI.Button (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), "XXXX here" + "\n <size=8> COINS</size>", storeButtonSt)) {
 												SoundManager.playShortButton ();
-						
-												Soomla.Store.StoreInventory.BuyItem (itemsToBuy [i]as string);
+												// Soomla.Store.StoreInventory.BuyItem (itemsToBuy [i]as string);
 												WeaponsController.currentWeapon = (WeaponsController.WEAPONS)i;
 												print (WeaponsController.currentWeapon);
 										}
@@ -295,54 +208,26 @@ public class StoreMenu : MonoBehaviour
 										if (globales.ISWIDE) {
 												storeButtonSt.fontSize = 21;
 												storeButtonWinSt.fontSize = 21;
-						
-						
 										} else {
 												storeButtonSt.fontSize = 12;
 												storeButtonWinSt.fontSize = 12;
-						
 										}
 										#endregion
+
 										GUI.Label (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), "AVAILABLE!", storeButtonSt);
 								}
 				
 								Rect labelRect = new Rect (posBox.x + sizeBox.x / 20, posButton.y + sizeBox.y * i, (sizeBox.x / 2.4f) * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y);
 								GUI.color = Color.gray;
-								GUI.Label (new Rect (labelRect.x, labelRect.y + offsetLetterShadow, labelRect.width, labelRect.height), "\n<color=black>" + pvi.Name.ToString () + "</color>\n " + pvi.Description.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
+								GUI.Label (new Rect (labelRect.x, labelRect.y + offsetLetterShadow, labelRect.width, labelRect.height), "\n<color=black>" + "SXX currendy" + "</color>\n " + "XX currency description", labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
 								GUI.color = Color.white;
-								GUI.Label (labelRect, "\n<color=white>" + pvi.Name.ToString () + "</color>\n " + pvi.Description.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
+								GUI.Label (labelRect, "\n<color=white>" + "XX currency name" + "</color>\n " + "XX currency description", labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
 				
 						}
 
-				}
-		
-				// RESTORE PURCHASES
-				if (!globales.goldenVersion) {
-						Vector2 sizeButtonRestore = new Vector2 (globales.SCREENW, globales.SCREENH / 12);
-						if (!CoinsManager.isPurchasesRestored) {
-
-								if (GUI.Button (new Rect (posBox.x, posButton.y + sizeButton.y * 4, sizeButtonRestore.x, sizeButtonRestore.y * globales.SCREENSCALE.y), "RESTORE PURCHASES", storeButtonSt)) {
-				
-										SoundManager.playShortButton ();
-										Soomla.Store.SoomlaStore.RestoreTransactions ();
-										Soomla.Store.SoomlaStore.RefreshInventory ();
-
-//										Soomla.Store.StoreInventory.BuyItem (Soomla.Store.GameAssets.RAYOS_ITEM_ID as string);//Soomla.Store.VirtualGood
-			
-								}
-						}
-
-						#if UNITY_IOS
-						if (CoinsManager.isPurchasesRestored) {
-
-								GUI.Label (new Rect (posBox.x, posButton.y + sizeButton.y * 4, sizeButtonRestore.x, sizeButtonRestore.y * globales.SCREENSCALE.y), "PURCHASES UP TO DATE", storeButtonSt);		
-						}
-						#endif
 		
 		
 						// RIGHT SIDE: COINS PACKS#################################
-
-
 						Vector3 posCoinButton;
 						Vector2 sizeCoinButton;
 
@@ -390,55 +275,12 @@ public class StoreMenu : MonoBehaviour
 //								GUI.color = Color.white;
 //								GUI.Label (labelRect, " \n<color=white>" + miPacks.MarketTitle.ToString () + "</color> \n" + miPacks.MarketDescription.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
 //						}
-
-
-
-
-
 						#endregion
 
-
 						//MONEY LABEL
-						GUI.Label (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y, sizeCoinButton.x * globales.SCREENSCALE.x, sizeCoinButton.y * 2 * globales.SCREENSCALE.y), "YOUR\nCOINS: \n\n<color=black>" + Soomla.Store.StoreInventory.GetItemBalance ("currency_coin") + "</color>", storeButtonWinSt);
-			
-						// UNITY ADS VIDEO
-						if (GUI.Button (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y * 3, (sizeCoinButton.x) * globales.SCREENSCALE.x, sizeCoinButton.y * globales.SCREENSCALE.y), "")) {
+						GUI.Label (new Rect (posCoinButton.x, posCoinButton.y + sizeCoinButton.y, sizeCoinButton.x * globales.SCREENSCALE.x, sizeCoinButton.y * 2 * globales.SCREENSCALE.y), "YOUR\nCOINS: \n\n<color=black>" + "XXX coins here" + "</color>", storeButtonWinSt);
 
-						}
-
-						//BUY PREMIUM
-						if (!globales.goldenVersion) {
-//				Vector2 sizeButton = new Vector2 (globales.SCREENW, globales.SCREENH / 14);
-				
-								Soomla.Store.PurchasableVirtualItem pviRayos = Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads") as Soomla.Store.PurchasableVirtualItem;
-								Soomla.Store.MarketItem mi = (((Soomla.Store.PurchaseWithMarket)Soomla.Store.StoreInfo.GetPurchasableItemWithProductId ("no_ads").PurchaseType).MarketItem) as Soomla.Store.MarketItem;
-				
-								if (!WeaponsController.bombaPurchased [1]) {
-										float bPos = 2.8f;
-										float bSize = 1.8f;
-					
-										if (globales.ISWIDE) {
-												bPos = 2.4f;
-												bSize = 1.1f;
-										} else {
-												bPos = 2.8f;
-												bSize = 1.8f;
-										}
-					
-										if (GUI.Button (new Rect (posCoinButton.x, posCoinButton.y, sizeCoinButton.x * globales.SCREENSCALE.x, sizeCoinButton.y * globales.SCREENSCALE.y), "REMOVE\nADS\n", storeButtonWinSt)) {// + mi.MarketPriceAndCurrency
-						
-												SoundManager.playShortButton ();
-						
-												Soomla.Store.StoreInventory.BuyItem (Soomla.Store.GameAssets.RAYOS_ITEM_ID as string);//Soomla.Store.VirtualGood
-										}
-					
-								} 
-						}
-			
-				}
-		
-		
-				//				//WEAPONS RACK
+				//	WEAPONS RACK
 				GUI.color = Color.white;
 		
 				float measure;
@@ -448,18 +290,21 @@ public class StoreMenu : MonoBehaviour
 
 				bool switcher;
 
+				// RACK BOTONES ARMAS
 				for (int k = 0; k< WeaponsController.WEAPONS.GetValues (typeof(WeaponsController.WEAPONS)).Length; k++) {
 
 						if (!globales.ISWIDE) {
-								bulletsHUD = new Rect (5 + (measure * k), globales.SCREENH / 1.65f, measure * globales.SCREENSCALE.x, measure * globales.SCREENSCALE.y);
+								bulletsHUD = new Rect (5 + (measure * k), globales.SCREENH / 2f, measure * globales.SCREENSCALE.x, measure * globales.SCREENSCALE.y);
 						} else {
 								bulletsHUD = new Rect (5 + (measure * k), globales.SCREENH / 1.65f, measure * globales.SCREENSCALE.x, measure / 2.5f * globales.SCREENSCALE.y);
 
 						}
 
-						if (WeaponsController.weaponPurchased [k] == true) {
+						// if (WeaponsController.weaponPurchased [k] == true) {
+						if (true) { // HACK
 				
 								switcher = GUI.Toggle (bulletsHUD, (bool)WeaponsController.weaponActivated [k], iconGfx [k] as Texture, weaponsRackSt);
+								
 								if (switcher != WeaponsController.weaponActivated [k]) {
 										SoundManager.playShortButton ();
 
@@ -468,19 +313,11 @@ public class StoreMenu : MonoBehaviour
 								if (WeaponsController.weaponActivated [k] == true) {
 										WeaponsController.weaponActivated [k] = WeaponsController.setMeOnly (k);
 								}
-				
-//								print ("ARMA: " + WeaponsController.currentWeapon);
-
 						} else {
 								GUI.Label (bulletsHUD, "LOCKED", weaponsRackSt);
 						}
 				}
 
-
-
-
-
-		
 				//GEARWORD
 				Rect gearWord;
 				var dimensionsGear = GUI.skin.button.CalcSize (new GUIContent ("SELECT YOUR GEAR:   " + WeaponsController.currentWeapon.ToString ())); 
@@ -491,111 +328,40 @@ public class StoreMenu : MonoBehaviour
 				GUI.color = Color.white;
 				GUI.Label (gearWord, "SELECT YOUR GEAR: <color=black>" + WeaponsController.currentWeapon.ToString () + "</color>", gearWordSt);
 
-
-
-
-
-
-
 				//BOMBAS
 				for (int m = 0; m< WeaponsController.BOMBAS.GetValues (typeof(WeaponsController.BOMBAS)).Length; m++) {
-			
 						Rect bombaHUD = new Rect (bulletsHUD.x + measure + ((measure / 1.4f) * m), bulletsHUD.y, bulletsHUD.width / 2, bulletsHUD.height / 2);
-//						if (WeaponsController.bombaPurchased [m] == true) {
-//				
-//								//								if (WeaponsController.bombaActivated [m]) {
-//								GUI.color = Color.black;
-//								GUI.DrawTexture (bombaHUD, iconBombaGfx [m] as Texture);
-//						} else {
+						if (WeaponsController.bombaPurchased [m] == true) {
+							if (WeaponsController.bombaActivated [m]) {
+								GUI.color = Color.black;
+								GUI.DrawTexture (bombaHUD, iconBombaGfx [m] as Texture);
+						} else {
 						GUI.color = Color.white;
 						GUI.DrawTexture (bombaHUD, iconBombaGfx [m] as Texture);
-//						}
-			
+						}
+					}
 				}
 
-
-
-
-
-
-
-
-
-
-
-
 				//LOWBUTTONS
-
-		
 				GUI.color = Color.white;
 				textDimensions = GUI.skin.button.CalcSize (new GUIContent (storeButtonSt.active.background));
-		
 				Vector2 size = new Vector2 (globales.SCREENW / 4, globales.SCREENH / 8);
-		
 				Vector3 pos = new Vector2 (globales.SCREENW / 2, globales.SCREENH - size.y * 2);
-
-//				Rect rectWeapons = new Rect (pos.x, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 
 				Rect rectRetry = new Rect (pos.x, pos.y, size.x * 2 * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 				Rect rectWinners = new Rect (pos.x + size.x * -1, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 				Rect rectAdverts = new Rect (pos.x + size.x * -2, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 				Rect rectStore = new Rect (pos.x + size.x * -2, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 
+				if (GUI.Button (rectRetry, "PLAY", lowBarSt)) {
 
-
-
-//				if (GUI.Button (rectWinners, "WINNERS", lowBarSt)) {
-//						SoundManager.playLongButton ();
-//
-//						gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-//						gameControlObj.GetComponent<gameControl> ().callScoreTable ();
-//				}
-//		
-//				if (GUI.Button (rectRetry, "PLAY", lowBarPlaySt)) {
-//
-//						gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-//						gameControlObj.GetComponent<gameControl> ().toGame ();
-//						gameControl.currentState = (gameControl.State)4;
-//						Destroy (gameObject);
-//				}
-//		
-//				if (GUI.Button (rectAdverts, "WEAPONS", lowBarSt)) {
-//						SoundManager.playLongButton ();
-//
-//						gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-//						gameControlObj.GetComponent<gameControl> ().toWeaponRoom ();
-//						gameControl.currentState = (gameControl.State)2;
-//						Destroy (gameObject);
-//				}
-
-
-
-
-
-
-
-				if (GUI.Button (rectWinners, "◊", lowBarSt)) {
-						SoundManager.playLongButton ();
-#if UNITY_ANDROID
-						Social.localUser.Authenticate ((bool success) => {
-								print (" auth sucess");	
-						});
-#endif
-						gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
-						gameControlObj.GetComponent<gameControl> ().callScoreTable ();
-				}
-		
-				if (GUI.Button (rectRetry, "PLAY", lowBarPlaySt)) {
-			
 						gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 						gameControl.currentState = (gameControl.State)4;
 						gameControlObj.GetComponent<gameControl> ().toGame ();
-						#if UNITY_IOS || UNITY_ANDROID
-//						ADBanner.banner.visible = false;
-#endif
+	
 						globales.showNewRecord = false;
 						globales.showNewLevel = false;
-			
+
 						Destroy (gameObject);
 				}
 
@@ -615,6 +381,7 @@ public class StoreMenu : MonoBehaviour
 //				}
 //				CoinsManager.addCoins (runable);
 //		}
+
 }
 		
 

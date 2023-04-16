@@ -88,26 +88,28 @@ public class WeaponsController : MonoBehaviour
 				bombaPurchased [0] = true;
 				bombaActivated [0] = true;
 
-				if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.LASER_ITEM_ID) > 0) {
+				//HACK activación armas?
+
+				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.LASER_ITEM_ID) > 0) {
 						weaponPurchased [1] = true;
-				}
-				if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.TWAY_ITEM_ID) > 0) {
+				// }
+				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.TWAY_ITEM_ID) > 0) {
 						weaponPurchased [2] = true;
 
-				}
-				if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.CIRCLE_ITEM_ID) > 0) {
+				// }
+				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.CIRCLE_ITEM_ID) > 0) {
 						weaponPurchased [3] = true;
 
-				}
-				if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.MOIRE_ITEM_ID) > 0) {
+				// }
+				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.MOIRE_ITEM_ID) > 0) {
 						weaponPurchased [4] = true;
 
-				}
+				// }
 
-				if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_ITEM_ID) > 0) {
+				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_ITEM_ID) > 0) {
 						bombaPurchased [1] = true;
-						print ("BOMBA ADS AQUI: " + Soomla.Store.GameAssets.RAYOS_ITEM_ID);
-				}
+						// print ("BOMBA ADS AQUI: " + Soomla.Store.GameAssets.RAYOS_ITEM_ID);
+				// }
 
 
 

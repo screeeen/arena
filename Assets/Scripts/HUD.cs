@@ -56,7 +56,7 @@ public class HUD : MonoBehaviour
 		public Texture iconRayos;
 		public Texture iconBomb;
 		public Texture iconRepetea;
-//		public Texture bocadillo;
+
 
 		public Texture dedo;
 		public Texture flechas;
@@ -101,9 +101,6 @@ public class HUD : MonoBehaviour
 				helpText [2] = ("DELAYED RAYS");
 				helpText [3] = ("INSTANT BOMB");
 				helpText [4] = ("HOLO SHIPS");
-
-
-
 
 				coinsDisplay = 0;//Soomla.Store.StoreInventory.GetItemBalance ("currency_coin");
 		}
@@ -156,9 +153,9 @@ public class HUD : MonoBehaviour
 		void Update ()
 		{
 
-				if (screenPos != globales.ISWIDE) {
-						setSizes ();
-				}
+				// if (screenPos != globales.ISWIDE) {
+				// 		setSizes ();
+				// }
 
 				if (gameControl.currentState != gameControl.State.INGAME) {
 						StartCoroutine ("runOut");
@@ -242,44 +239,7 @@ public class HUD : MonoBehaviour
 						GUI.color = Color.white;
 						GUI.Label (new Rect (messageRect.x - dimensionsNewLevel.x / 2, messageRect.y + yU, messageRect.width, messageRect.height), "LEVEL " + globales.level.ToString () + "\n<size=16>NEXT UPGRADE: SCORE " + (GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().factorLevel * (globales.level + 1)).ToString () + "!</size>", inGameSt);
 						//						StartCoroutine ("waitTime", 2f);
-//						print ("PRINTEO");
 				}
-
-
-// ADS TRACES
-
-//				if (globales.showAdApple) {
-//				GUI.Label (new Rect (300, 100, 50, 50), Time.timeScale.ToString (), bestkillsSt);
-			
-//				}
-//
-//				if (ADBanner.banner.loaded) {
-//				GUI.Label (new Rect (300, 200, 50, 50), "culo: " + GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().factorLevel, bestkillsSt);
-			
-//				}
-//
-//				if (globales.showAdmob) {
-//						GUI.Label (new Rect (300, 300, 50, 50), "SHOWADMOB yes", bestkillsSt);
-//			
-//				}
-//		
-//				if (globales.loadedAdmob) {
-//						GUI.Label (new Rect (300, 400, 50, 50), "RELOADEDMOB yes", bestkillsSt);
-//			
-//				}
-
-
-//				if (globales.tutorial) {
-//						GUI.Label (new Rect (300, 100, 50, 50), "tutorial yes", bestkillsSt);
-//					
-//				}
-//		
-//				if (globales.tutorialEnemiesReady) {
-//						GUI.Label (new Rect (300, 200, 50, 50), "endtutorial yes", bestkillsSt);
-//					
-//				}
-
-
 
 				//BULLETS
 
@@ -319,7 +279,6 @@ public class HUD : MonoBehaviour
 
 
 				//SCORE
-
 				var textDimensions = GUI.skin.label.CalcSize (new GUIContent (globales.kills + " SCORE"));
 				var textDimensionsB = GUI.skin.label.CalcSize (new GUIContent ("<color=yellow>" + globales.kills + "</color>" + " BEST"));
 				string bestMaxKillsString = "";
@@ -367,11 +326,10 @@ public class HUD : MonoBehaviour
 
 
 				//COINS
-
 				GUI.color = Color.white;
 
 				if (coinsDisplay != CoinsManager.coins) {
-						coinsText = " <color=white>COINS </color><color=yellow>" + Soomla.Store.StoreInventory.GetItemBalance ("currency_coin") + "</color>";
+						coinsText = " <color=white>COINS </color><color=yellow>" + " XXX currency_coin here" + "</color>";
 				}
 
 				if (gameControl.currentState == gameControl.State.INGAME) {
@@ -388,125 +346,14 @@ public class HUD : MonoBehaviour
 
 				if (CoinsManager.isAddingCoins) {
 						t--;
-//						print ("T " + t);
+						print ("T adding coins" + t);
 						if (t <= 0) {
 								CoinsManager.isAddingCoins = false;
 								t = 10;
-//								print ("ENTRO EN TTTTTT");
 						}
 
 				}
 
-
-
-
-
-				//HELP TUTORIAL DISPLAY
-				// if (gameControl.currentState == gameControl.State.TUTORIAL && 
-// 				if (gameControl.slowMotion) {
-// 						GUI.DrawTexture (new Rect (10, 10, globales.SCREENW * globales.SCREENSCALE.x, globales.SCREENH * globales.SCREENSCALE.y), dedo, ScaleMode.ScaleToFit);
-// 						var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-// //						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.2f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=28><color=black>KEEP YOUR FINGER\nON SCREEN</color></size>", readySt);
-// //						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.2f, dimensions.x, dimensions.y), "<size=28><color=white>KEEP YOUR FINGER\nON SCREEN</color></size>", readySt);
-
-			
-// 				} 
-				//PRESSED
-				// if (gameControl.currentState == gameControl.State.TUTORIAL && 
-// 				if (!gameControl.slowMotion) {
-// 						// GUI.DrawTexture (new Rect (10, 10, globales.SCREENW * globales.SCREENSCALE.x, globales.SCREENH * globales.SCREENSCALE.y), flechas, ScaleMode.ScaleToFit);
-// 						var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-// 						// GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=28><color=black>SWIPE GENTLY\nDODGE BUGS</color></size>", readySt);
-// 						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f, dimensions.x, dimensions.y), "<size=28><color=white>!gameControl.slowMotion</color></size>", readySt);
-
-// //						if (GameObject.FindGameObjectWithTag ("bocadillo")) {
-// //								Vector2 bocaPos = Camera.main.WorldToScreenPoint (GameObject.FindGameObjectWithTag ("bocadillo").transform.position);
-// //			
-// //								if (bocaPos != null) {
-// //										bocaPos.y = globales.SCREENH - bocaPos.y;
-// //
-// //										GUI.Label (new Rect (bocaPos.x - dimensions.x * 2, bocaPos.y, 100, 20), "<color=black><size=13>I AM THE SHIP!</size></color>", bocaSt);
-// //								}
-// //						}
-
-			
-// 				} 
-
-				if (gameControl.currentState == gameControl.State.MENU) {
-						var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-			
-//						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 4.8f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=28><color=black>WELCOME!</color></size>", readySt);
-//						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 4.8f, dimensions.x, dimensions.y), "<size=28><color=white>WELCOME!</color></size>", readySt);
-
-				}
-
-				if (globales.failedTutorial) {
-						var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-
-						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=28><color=black>AVOID BUGS!</color></size>", readySt);
-						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f, dimensions.x, dimensions.y), "<size=28><color=white>AVOID BUGS!</color></size>", readySt);
-
-				}
-
-//				if (globales.tutorialIsFinished) {
-//						var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-//
-//						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=28><color=black>WELL DONE!</color></size>", readySt);
-//						GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.8f, dimensions.x, dimensions.y), "<size=28><color=white>WELL DONE!</color></size>", readySt);
-//			
-//				}
-
-				if (globales.tutorialIsFinished) {
-//						GUI.Label (new Rect (0 + offsetLetterShadow, 0 + offsetLetterShadow, globales.SCREENW, globales.SCREENH), "<color=black>AVOID THE HOLES.\nCONTROL THE SHIP BY HOLDING YOUR FINGER ON SCREEN.\nTHE SHIP SHOOTS AUTOMATICALLY THE CLOSEST TARGET.\nCOLLECT AMMO.\nCOLLECT COINS\nGOOD LUCK!\n \nTAP TO CONTINUE</color>", buttonSt);
-//						GUI.Label (new Rect (0 + offsetLetterShadow, 0, globales.SCREENW, globales.SCREENH), "<color=white>AVOID THE HOLES.\nCONTROL THE SHIP BY HOLDING YOUR FINGER ON SCREEN.\nTHE SHIP SHOOTS AUTOMATICALLY THE CLOSEST TARGET.\nCOLLECT AMMO.\nCOLLECT COINS\nGOOD LUCK!\n \nTAP TO CONTINUE</color>", buttonSt);
-
-						if (GUI.Button (new Rect (0, 0, globales.SCREENW, globales.SCREENH), "  ", buttonSt)) {
-								globales.tutorialIsFinished = false;
-								Time.timeScale = 1f;
-						}
-			
-				}
-				//READY DISPLAY
-				if (gameControl.currentState == gameControl.State.INGAME && !globales.tutorialIsFinished) {
-
-						if (gameControl.currentState == gameControl.State.INGAME && counter < 60) {
-
-								counter++;
-
-								GUI.color = Color.black;
-								var dimensions = GUI.skin.label.CalcSize (new GUIContent ("ARENA!"));
-								GUI.Label (new Rect ((globales.SCREENW / 2) - (dimensions.x / 2) + offsetLetterShadow, (globales.SCREENH - globales.SCREENH / 1.2f) + offsetLetterShadow, dimensions.x * globales.SCREENSCALE.x, dimensions.y * globales.SCREENSCALE.y), "ARENA!", readySt);
-								GUI.color = Color.white;
-								GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 1.2f, dimensions.x, dimensions.y), "ARENA!", readySt);
-						
-						}
-
-
-						//HELP DISPLAY
-						GUI.color = Color.white;
-//						string keyText = "<color=red>TO PLAY:</color>\nSWIPE YOUR FINGER ANYWHERE\nTO CONTROL YOUR SHIP\n";
-
-						var dimensionsTip = GUI.skin.label.CalcSize (new GUIContent (iconCoin));
-
-// 						if (gameControl.slowMotion && counter >= 60) {
-
-// 								GUI.DrawTexture (new Rect (10, 10, globales.SCREENW * globales.SCREENSCALE.x, globales.SCREENH * globales.SCREENSCALE.y), dedo, ScaleMode.ScaleToFit);
-// //								GUI.DrawTexture (new Rect (0, 0, globales.SCREENW * globales.SCREENSCALE.x, globales.SCREENH * globales.SCREENSCALE.y), blackTexture, ScaleMode.ScaleToFit);
-
-// 								var dimensions = GUI.skin.label.CalcSize (new GUIContent ("HOLD!"));
-// 								GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 2.9f + offsetLetterShadow, dimensions.x, dimensions.y), "<size=20> <color=black>KEEP YOUR FINGER\n ON SCREEN!</color></size>", readySt);
-
-// 								GUI.Label (new Rect (globales.SCREENW / 2 - dimensions.x / 2, globales.SCREENH - globales.SCREENH / 2.9f, dimensions.x, dimensions.y), "<size=20> <color=white>KEEP YOUR FINGER\n ON SCREEN!</color></size>", readySt);
-
-// 						} 
-				}
-
-				if (gameControl.currentState == gameControl.State.INGAME && globales.OLEADA != "") {
-
-						
-						GUI.Label (new Rect (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.9f, globales.SCREENW, globales.SCREENH), "<size=20> <color=red>" + globales.OLEADA + "</color></size>", readySt);
-		
-				}
 				globales.EndGUI ();
 		}
 		
