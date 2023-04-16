@@ -242,13 +242,10 @@ public class HUD : MonoBehaviour
 				}
 
 				//BULLETS
-
 				GUI.color = Color.black;
 				Rect bulletsRect = new Rect (5, offsetLetterShadow * 2, bulletsSt.fontSize * globales.SCREENSCALE.x, bulletsSt.fontSize * globales.SCREENSCALE.y);
-
-
 				GUI.Label (bulletsRect, "BULLETS" + WeaponsController.bullets [(int)WeaponsController.currentWeapon], bulletsSt);
-				GUI.color = Color.white;
+				GUI.color = Color.gray;
 				bulletsRect = new Rect (5, 0, bulletsSt.fontSize * globales.SCREENSCALE.x, bulletsSt.fontSize * globales.SCREENSCALE.y);
 				GUI.Label (bulletsRect, "BULLETS<color=white>" + WeaponsController.bullets [(int)WeaponsController.currentWeapon] + "</color>", bulletsSt);
 
@@ -306,14 +303,13 @@ public class HUD : MonoBehaviour
 
 
 
+				//SCORE	
 				GUI.color = Color.black;
 				GUI.Label (new Rect (killsHUD.x, killsHUD.y + offsetLetterShadow * 2, textDimensions.x * globales.SCREENSCALE.x, textDimensions.y * globales.SCREENSCALE.y), globales.kills + "SCORE ", killsSt);
-//				GUI.Label (new Rect (bestKillsHUD.x + offsetLetterShadow, bestKillsHUD.y + offsetLetterShadow, textDimensionsB.x * globales.SCREENSCALE.x, textDimensionsB.y * globales.SCREENSCALE.y), globales.maxKills + "BEST ", bestkillsSt);
-
-				GUI.color = Color.white;
-				//SCORE	
+				GUI.color = Color.gray;
 				GUI.Label (new Rect (killsHUD.x, killsHUD.y, textDimensions.x * globales.SCREENSCALE.x, textDimensions.y * globales.SCREENSCALE.y), "<color=white>" + globales.kills + "</color>SCORE ", killsSt);
 				//BEST	
+//				GUI.Label (new Rect (bestKillsHUD.x + offsetLetterShadow, bestKillsHUD.y + offsetLetterShadow, textDimensionsB.x * globales.SCREENSCALE.x, textDimensionsB.y * globales.SCREENSCALE.y), globales.maxKills + "BEST ", bestkillsSt);
 				GUI.Label (new Rect (bestKillsHUD.x, bestKillsHUD.y, textDimensionsB.x * globales.SCREENSCALE.x, textDimensionsB.y * globales.SCREENSCALE.y), bestMaxKillsString, bestkillsSt);
 				//LEVEL		
 				GUI.Label (new Rect (bestKillsHUD.x, bestKillsHUD.y + bestkillsSt.fontSize, textDimensionsB.x * globales.SCREENSCALE.x, textDimensionsB.y * globales.SCREENSCALE.y), "LEVEL " + globales.level, bestkillsSt);
