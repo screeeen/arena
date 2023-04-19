@@ -46,7 +46,7 @@ public class gameControl : MonoBehaviour
 	Vector2 posH;
 
 
-	public GameObject admob; //no borrar que peta el build...
+	// public GameObject admob; //no borrar que peta el build...
 	public GameObject player;
 	GameObject currentPlayer;
 	
@@ -61,6 +61,7 @@ public class gameControl : MonoBehaviour
 
 	GameObject currentWeaponRoom;
 	GameObject currentStoreRoom;
+
 	public GameObject tutorialControllerObj;
 	public GameObject weaponRoom;
 	public GameObject storeObj;	

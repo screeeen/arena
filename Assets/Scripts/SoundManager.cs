@@ -142,7 +142,7 @@ public class SoundManager : MonoBehaviour
 				soundPlayer = GetComponent<AudioSource> ();
 				// soundPlayer.enabled = true;
 
-				print (soundPlayer);
+				
 		}
 
 		void Update ()

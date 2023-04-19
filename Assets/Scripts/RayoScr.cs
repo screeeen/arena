@@ -6,7 +6,7 @@ public class RayoScr : MonoBehaviour
 
 		public GameObject player;
 		public GameObject target;
-		LineRenderer lr;
+		public LineRenderer lr;
 		public int timer;
 		public GameObject enemyController;
 		public GameObject randomExplosion;

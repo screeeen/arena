@@ -19,10 +19,21 @@ public class enemyController : MonoBehaviour
 
 		void Awake ()
 		{
+				initHolesGame ();
+		}
+
+		public void initHolesGame ()
+		{
 				GameObject currentAgujerosPadre = Instantiate (agujerosPadre, transform.position, Quaternion.identity)as GameObject;
-//				currentAgujerosPadre.transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.8f, 1f));
 				currentAgujerosPadre.transform.parent = transform;
-				updatePosHoles();
+
+				GameObject[] gos = GameObject.FindGameObjectsWithTag ("hole");
+
+				foreach (GameObject go in gos) {
+						if (posHoles.Count < 6) {
+								posHoles.Add (go.transform.position);
+						}
+				}
 		}
 
 
@@ -36,6 +47,8 @@ public class enemyController : MonoBehaviour
 								posHoles.Add (go.transform.position);
 						}
 				}
+					Debug.Log(gos);
+					Debug.Log(posHoles);
 		}
 	
 		
@@ -89,9 +102,11 @@ public class enemyController : MonoBehaviour
 				setMaxNumSnakes ();
 
 
-				if (gos.Length < maxNumSnakes) {
+					Debug.Log(gos.Length);
+					Debug.Log(posHoles.Count);
 
-						Vector2 v = (Vector3)posHoles [Random.Range (0, posHoles.Count)];
+				if (gos.Length < maxNumSnakes) {
+						Vector2 v = (Vector3)posHoles [1];//Random.Range (0, posHoles.Count)
 						//						if (newSnake) {
 //								Vector2 v = newSnake.transform.position;//(Vector2)posHoles [Random.Range (0, posHoles.Count)];
 						GameObject sp = Instantiate (snake, v, Quaternion.identity)as GameObject;
