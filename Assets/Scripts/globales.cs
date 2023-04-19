@@ -63,9 +63,9 @@ public class globales : MonoBehaviour
 		Application.targetFrameRate = frameRate;
 		getData ();
 		setCamera ();
-		if (numberOfGames == null) {
+		// if (!numberOfGames == null) {
 			numberOfGames = 0;
-		}
+		// }
 		milisecsEnemyDestroyed = 30;
 	}
 
@@ -123,49 +123,6 @@ public class globales : MonoBehaviour
 		soundCheck ();
 		setCamera ();
 		dustLevel = 100;
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-		//DEBUG
-		#if UNITY_EDITOR
-				if (Input.GetKeyDown (KeyCode.A)) {
-//						deleteData ();
-						// Camera.main.orthographicSize = 9;
-//						cameraScript.initOrthoSize = 9;
-//						Camera.main.GetComponentInChildren<BackgroundScript> ().fillBg ();
-// 						setCamera ();
-// 						if (ISWIDE) {
-// 								ISWIDE = false;
-// //								Debug.Log ("NOT IS WIDE");
-// 						} 
-// 						if (!ISWIDE) {
-// 								ISWIDE = true;
-// 						}
-						// GameObject.FindGameObjectWithTag ("GameController").GetComponent<gameControl> ().levelUpgrade ();
-				}
-		#endif
-
-	}
-
-	public static void setPosAgujeros ()
-	{
-		#if UNITY_IOS || UNITY_ANDROID
-				if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-
-						if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-								GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.8f, 1f));
-						}
-				}
-
-				if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-
-						if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-								GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (SCREENW / 2, SCREENH - SCREENH / 1.4f, 1f));
-						}
-				}
-		#endif
 	}
 
 	public static void clearMenu ()
@@ -293,25 +250,25 @@ public class globales : MonoBehaviour
 		SetBool ("sound", sfxSwitch);
 		SetBool ("music", musicSwitch);
 
-		print ("SAVE");
-		Debug.Log ("-- maxKills: " + maxKills1);
-		Debug.Log ("-- save number of games " + globales.numberOfGames);
-		Debug.Log ("-- currentWeapon: " + WeaponsController.currentWeapon);
-		Debug.Log ("-- sound : " + globales.sfxSwitch);
-		Debug.Log ("-- music : " + globales.musicSwitch);
+		// print ("SAVE");
+		// Debug.Log ("-- maxKills: " + maxKills1);
+		// Debug.Log ("-- save number of games " + globales.numberOfGames);
+		// Debug.Log ("-- currentWeapon: " + WeaponsController.currentWeapon);
+		// Debug.Log ("-- sound : " + globales.sfxSwitch);
+		// Debug.Log ("-- music : " + globales.musicSwitch);
 	} 
 
 	void getData ()
 	{
-		print ("GETTING DATA");
+		// print ("GETTING DATA");
 		if (PlayerPrefs.HasKey ("savedMaxKills")) {
 			maxKills1 = PlayerPrefs.GetInt ("savedMaxKills");
-			Debug.Log ("loading... maxKills: " + maxKills1);
+			// Debug.Log ("loading... maxKills: " + maxKills1);
 		}
 
 		if (PlayerPrefs.HasKey ("currentWeapon")) {
 			WeaponsController.currentWeapon = (WeaponsController.WEAPONS)PlayerPrefs.GetInt ("currentWeapon");
-			Debug.Log ("loading... currentWeapon: " + WeaponsController.currentWeapon);
+			// Debug.Log ("loading... currentWeapon: " + WeaponsController.currentWeapon);
 		} 
 
 		if (PlayerPrefs.HasKey ("numberOfGames")) {
@@ -325,12 +282,12 @@ public class globales : MonoBehaviour
 			globales.musicSwitch = GetBool ("music");
 		}
 
-		print ("LOAD");
-		print ("load NUMERO JUEGOS: " + globales.numberOfGames);
-		Debug.Log ("maxKills: " + maxKills1);
-		Debug.Log ("--currentWeapon: " + WeaponsController.currentWeapon);
-		Debug.Log ("--sound: " + sfxSwitch);
-		Debug.Log ("--music: " + musicSwitch);
+		// print ("LOAD");
+		// print ("load NUMERO JUEGOS: " + globales.numberOfGames);
+		// Debug.Log ("maxKills: " + maxKills1);
+		// Debug.Log ("--currentWeapon: " + WeaponsController.currentWeapon);
+		// Debug.Log ("--sound: " + sfxSwitch);
+		// Debug.Log ("--music: " + musicSwitch);
 
 
 
@@ -347,7 +304,7 @@ public class globales : MonoBehaviour
 
 
 		PlayerPrefs.Save ();
-		print ("no data");
+		// print ("no data");
 	}
 
 	//AUDIO TOGGLE!!
@@ -419,7 +376,7 @@ public class globales : MonoBehaviour
 
 	public static IEnumerator sleep (float t)
 	{
-		print ("ENTRA SLEEP");
+		// print ("ENTRA SLEEP");
 		yield return new WaitForSeconds (t);
 		yield return null;
 	}

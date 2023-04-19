@@ -11,9 +11,6 @@ public class enemyController : MonoBehaviour
 		public  ArrayList posHoles = new ArrayList ();
 		public  static ArrayList  enemies = new ArrayList ();
 
-		// Vector2 tutorialPos;
-		// GameObject agujeroTutorialObj;
-
 		public GameObject agujerosPadre;
 		public GameObject currentAgujerosPadre;
 
@@ -22,76 +19,23 @@ public class enemyController : MonoBehaviour
 
 		void Awake ()
 		{
-				// #if UNITY_IOS || UNITY_ANDROID
-				// if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-			
-				// 		if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-				// 				GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.8f, 1f));
-				// 		}
-				// }
-		
-				// if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) {
-			
-				// 		if (GameObject.FindGameObjectWithTag ("agujerosParent")) {
-				// 				GameObject.FindGameObjectWithTag ("agujerosParent").transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.4f, 1f));
-				// 		}
-				// }
-				// #endif
-				// INIT HOLES
-				initHolesGame ();
-		}
-
-// 		public void initHolesTutorial ()
-// 		{
-// //
-// //				Destroy (GameObject.FindGameObjectWithTag ("agujerosParent"));
-// //
-// // //				tutorialPos = Camera.main.ScreenToWorldPoint (new Vector2 (globales.SCREENW / 2f, globales.SCREENH / 3.2f));
-// // // //				agujeroTutorialObj = Instantiate (hole, tutorialPos, Quaternion.identity) as GameObject;
-// // //				posHoles.Add (agujeroTutorialObj.transform.position);
-
-// //				print ("POSHOLES " + posHoles.Count);
-
-// 		}
-
-		public void initHolesGame ()
-		{
-
-				Debug.Log("INICIA BURATOS");
 				GameObject currentAgujerosPadre = Instantiate (agujerosPadre, transform.position, Quaternion.identity)as GameObject;
 //				currentAgujerosPadre.transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (globales.SCREENW / 2, globales.SCREENH - globales.SCREENH / 1.8f, 1f));
 				currentAgujerosPadre.transform.parent = transform;
-
-				GameObject[] gos = GameObject.FindGameObjectsWithTag ("hole");
-
-				foreach (GameObject go in gos) {
-						if (posHoles.Count < 6) {
-								posHoles.Add (go.transform.position);
-						}
-				}
-				print ("POSHOLES GAME" + posHoles.Count);
-
+				updatePosHoles();
 		}
+
 
 		public void updatePosHoles ()
 		{
 				posHoles.Clear ();
-				print ("POSHOLES UPDATE " + posHoles.Count);
 				GameObject[] gos = GameObject.FindGameObjectsWithTag ("hole");
 		
 				foreach (GameObject go in gos) {
-						if (posHoles.Count < 6) {
+						if (posHoles.Count < 5) {
 								posHoles.Add (go.transform.position);
-//								print ("POSHOLES COUNT " + posHoles.Count);
-//								print ("GO POSIITION " + go.transform.position);
-
 						}
 				}
-				for (int i = 0; i< posHoles.Count; i++) {
-//						print ("POSHOLES UPDATED " + posHoles [i].ToString ());
-				}
-
-
 		}
 	
 		
@@ -114,7 +58,7 @@ public class enemyController : MonoBehaviour
 				GameObject[] gos = GameObject.FindGameObjectsWithTag ("hole");
 
 				foreach (GameObject go in gos) {
-			
+
 						Destroy (go);
 				}
 		}

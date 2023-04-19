@@ -16,7 +16,7 @@ public class explosionGenerator : MonoBehaviour
 	  		
 				for (int i = 0; i < factor; i++) {
 						randomPos = new Vector2 (transform.position.x + Random.Range (-distanciaMax, distanciaMax), transform.position.y + Random.Range (-distanciaMax, distanciaMax));
-						GameObject g = Instantiate (explosion, randomPos, Quaternion.identity) as GameObject;
+						// GameObject g = Instantiate (explosion, randomPos, Quaternion.identity) as GameObject;
 
 				}
 				// Destroy (gameObject);

@@ -54,10 +54,9 @@ public class newWeaponRoomSrc : MonoBehaviour
 				} else {
 						transform.GetChild (0).transform.localScale = Vector3.one;
 						Vector3 z = Vector3.zero;
-						print ("hota");
 						yield return null;
 						transform.GetChild (0).transform.localRotation = Quaternion.Euler (z);
-						StartCoroutine ("waiting");
+						// StartCoroutine ("waiting");
 				}
 
 
@@ -70,30 +69,11 @@ public class newWeaponRoomSrc : MonoBehaviour
 //
 //		}
 	
-		IEnumerator waiting ()
-		{
-				//				yield return new WaitForSeconds (20.8f);
-				#if UNITY_EDITOR || UNITY_ANDROID
-				if (InputHelper.space ()) {
-						isNewWeaponReady = true;
-//						print ("WAITING ENTER");
+		// IEnumerator waiting ()
+		// {
+		// 		//				yield return new WaitForSeconds (20.8f);
 
-						yield return null;
-				}
-		
-				#endif
-				#if UNITY_IOS
-				if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
-						isNewWeaponReady = true;
-//						print ("WAITING ENTER");
-						yield return null;
-
-				}
-		
-#else
-				yield return null;
-#endif
-		}
+		// }
 
 		public static bool isReady ()
 		{

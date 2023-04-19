@@ -36,7 +36,7 @@ public class naveProxyController : MonoBehaviour
 
 		public void setWorking ()
 		{
-				print ("NAVE PROXY WORKING " + working);
+				// print ("NAVE PROXY WORKING " + working);
 				if (!working) {
 						gameObject.transform.GetChild (0).GetComponent<Animation> ().Play ();
 						gameObject.transform.GetChild (0).GetComponent<Animation> ().Rewind ();

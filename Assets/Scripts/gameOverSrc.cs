@@ -244,12 +244,12 @@ public class gameOverSrc : MonoBehaviour
 
 		// LOW BAR BUTTONS
 		GUI.color = Color.white;
-		var textDimensions = GUI.skin.button.CalcSize (new GUIContent (lowBarSt.active.background));
+		// var textDimensions = GUI.skin.button.CalcSize (new GUIContent (lowBarSt.active.background));
 		Vector2 size = new Vector2 (globales.SCREENW / 4, globales.SCREENH / 8);
 		Vector3 pos = new Vector2 (globales.SCREENW / 2, globales.SCREENH - size.y * 2);//transform.position;//Camera.main.WorldToScreenPoint (transform.position);
 
 
-		Rect rectWinners = new Rect (pos.x + size.x * -1, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
+		// Rect rectWinners = new Rect (pos.x + size.x * -1, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 		Rect rectStore = new Rect (pos.x + size.x * -2, pos.y, size.x * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 		Rect rectRetry = new Rect (pos.x, pos.y, size.x * 2 * globales.SCREENSCALE.x, size.y * globales.SCREENSCALE.y * 2);
 

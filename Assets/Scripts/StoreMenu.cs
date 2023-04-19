@@ -201,7 +201,7 @@ public class StoreMenu : MonoBehaviour
 												SoundManager.playShortButton ();
 												// Soomla.Store.StoreInventory.BuyItem (itemsToBuy [i]as string);
 												WeaponsController.currentWeapon = (WeaponsController.WEAPONS)i;
-												print (WeaponsController.currentWeapon);
+												// print (WeaponsController.currentWeapon);
 										}
 								} else {
 										#region POSITIONS

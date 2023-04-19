@@ -342,7 +342,7 @@ public class HUD : MonoBehaviour
 
 				if (CoinsManager.isAddingCoins) {
 						t--;
-						print ("T adding coins" + t);
+						// print ("T adding coins" + t);
 						if (t <= 0) {
 								CoinsManager.isAddingCoins = false;
 								t = 10;

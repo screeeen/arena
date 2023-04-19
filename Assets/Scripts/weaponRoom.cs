@@ -272,8 +272,6 @@ public class weaponRoom : MonoBehaviour
 								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 								gameControl.currentState = (gameControl.State)4;
 								gameControlObj.GetComponent<gameControl> ().toGame ();
-								#if UNITY_IOS || UNITY_ANDROID
-								#endif
 								globales.showNewRecord = false;
 								globales.showNewLevel = false;
 				
@@ -287,9 +285,6 @@ public class weaponRoom : MonoBehaviour
 								gameControlObj = GameObject.FindGameObjectWithTag ("GameController");
 								gameControlObj.GetComponent<gameControl> ().toStoreRoom ();
 								gameControl.currentState = (gameControl.State)7;
-								#if UNITY_IOS || UNITY_ANDROID
-//								ADBanner.banner.visible = false;
-#endif
 								globales.showNewRecord = false;
 								globales.showNewLevel = false;
 				

@@ -65,7 +65,7 @@ public class headScr : MonoBehaviour
 
 		public void destroyParts ()
 		{
-				float waitTime = 0.4f;
+				// float waitTime = 0.4f;
 				for (int i= 0; i<segments.Count; i++) {
 						OnExplosion (segments [i].gameObject.transform.position);
 						Destroy (segments [i].gameObject);

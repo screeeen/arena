@@ -140,6 +140,7 @@ public class SoundManager : MonoBehaviour
 				dingSnd = library.dingSnd;
 
 				soundPlayer = GetComponent<AudioSource> ();
+				// soundPlayer.enabled = true;
 
 				print (soundPlayer);
 		}

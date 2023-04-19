@@ -46,7 +46,7 @@ public class gameControl : MonoBehaviour
 	Vector2 posH;
 
 
-	public GameObject admob;
+	public GameObject admob; //no borrar que peta el build...
 	public GameObject player;
 	GameObject currentPlayer;
 	
@@ -107,14 +107,7 @@ public class gameControl : MonoBehaviour
 
 	public void callScoreTable ()
 	{
-		#if UNITY_IOS
-				gameCenter.ShowLeaderboardUI ();
-		#endif
-
-		#if UNITY_ANDROID
-				PlayGamesPlatform.Instance.ShowLeaderboardUI ("CgkI44DYkKITEAIQAA");
-		#endif
-
+		print("scoretable");
 	}
 	
 	void Start ()
@@ -132,25 +125,16 @@ public class gameControl : MonoBehaviour
 	{
 		tempLevel = globales.level;
 	
-		#if UNITY_EDITOR
+		
 				if (InputHelper.space ()) {
 						switch (currentState) {
 						case State.MENU:
 								Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shake", 4f);
-								StartCoroutine ("waitTime", 2f);
+								// StartCoroutine ("waitTime", 2f);
 								removeMenu ();
-								Debug.Log("presionado SPACE");
-								
-								// if (checkTutorial ()) {
-								// 		currentState = State.TUTORIAL;
-										// resetTutorial ();
-								// } else {
-										toGame ();
-										currentState = State.INGAME;
-								// }
+								toGame ();
+								currentState = State.INGAME;
 								break;
-						// case State.TUTORIAL:
-						// 		break;
 						case State.MAP:
 								break;	
 						case State.INTERLUDE:
@@ -168,20 +152,11 @@ public class gameControl : MonoBehaviour
 				
 						}
 				}
-		#endif
+		
 
 		if (currentState == gameControl.State.INGAME) {
 			stageTime += Time.deltaTime;
 
-			// if (Input.touchCount == 0) { // && currentState == gameControl.State.TUTORIAL) {
-			// 	Time.timeScale = 0.0f;
-			// 	slowMotion = false;
-			// } 
-
-			// if (Input.touchCount == 0 && HUD.counter >= 60 && currentState == gameControl.State.INGAME) {
-			// 	Time.timeScale = 0.0f;
-
-			// 	slowMotion = false;
 				if (currentPlayer) {
 					currentPlayer.GetComponentInChildren<Animator> ().Play ("landingAnim");
 				}
@@ -192,6 +167,7 @@ public class gameControl : MonoBehaviour
 			// }
 
 			//RESTORE SOUND SPECS
+
 			if (SoundManager.soundPlayer.pitch < 1) {
 				SoundManager.soundPlayer.pitch += 0.1f;
 				
@@ -212,14 +188,6 @@ public class gameControl : MonoBehaviour
 			
 		}
 
-		//CAMBIO		
-		// if (Input.touchCount > 0 || currentState == gameControl.State.GAMEOVER) {
-
-		// 	slowMotion = false;
-		// 	Time.timeScale = 1f;
-		// }
-		
-		
 		//pehkingpah dead
 		if (slowDead) {
 			Time.timeScale = 0.2f;	
@@ -258,13 +226,6 @@ public class gameControl : MonoBehaviour
 
 	
 	//---------GAME-------------
-
-	// public bool checkTutorial ()
-	// {
-	// 	print ("NUMERO DE JUEGOS: " + globales.numberOfGames);	
-	// 	return false;
-	// }
-
 
 	public void toGame ()
 	{
@@ -320,8 +281,6 @@ public class gameControl : MonoBehaviour
 				Debug.Log("playerrr?");
 				currentPlayer = (GameObject)Instantiate (player, highPos, Quaternion.identity);
 			}
-
-			globales.setPosAgujeros ();
 
 			if (!_enemyController) {
 				currentEnemyController = (GameObject)Instantiate (enemyController, posH, Quaternion.identity);
