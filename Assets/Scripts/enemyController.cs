@@ -47,8 +47,6 @@ public class enemyController : MonoBehaviour
 								posHoles.Add (go.transform.position);
 						}
 				}
-					Debug.Log(gos);
-					Debug.Log(posHoles);
 		}
 	
 		
@@ -100,11 +98,6 @@ public class enemyController : MonoBehaviour
 				GameObject[] gos = GameObject.FindGameObjectsWithTag ("snake");
 
 				setMaxNumSnakes ();
-
-
-					Debug.Log(gos.Length);
-					Debug.Log(posHoles.Count);
-
 				if (gos.Length < maxNumSnakes) {
 						Vector2 v = (Vector3)posHoles [1];//Random.Range (0, posHoles.Count)
 						//						if (newSnake) {

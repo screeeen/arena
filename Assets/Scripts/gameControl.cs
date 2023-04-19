@@ -57,8 +57,6 @@ public class gameControl : MonoBehaviour
 	public GameObject menuObj;
 	GameObject currentMenu;
 
-
-
 	GameObject currentWeaponRoom;
 	GameObject currentStoreRoom;
 
@@ -147,8 +145,6 @@ public class gameControl : MonoBehaviour
 						case State.INGAME:
 						Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shake", 4f);
 						slowMotion = !slowMotion;
-						Debug.Log("slow");
-						Debug.Log(slowMotion);
 								break;
 				
 						}
@@ -230,7 +226,6 @@ public class gameControl : MonoBehaviour
 
 	public void toGame ()
 	{
-		Debug.Log("to Game");
 		// WeaponsController.updateWeapons (); // for android check!
 		currentState = State.INGAME;
 		globales.numberOfGames += 1;
@@ -279,7 +274,6 @@ public class gameControl : MonoBehaviour
 			// yield return new WaitForSeconds (0.8f);
 
 			if (!currentPlayer) {
-				Debug.Log("playerrr?");
 				currentPlayer = (GameObject)Instantiate (player, highPos, Quaternion.identity);
 			}
 
@@ -293,9 +287,7 @@ public class gameControl : MonoBehaviour
 			start = true;
 			globales.kills = 0;
 			globales.level = 1;
-			factorLevel = 1;
-			Debug.Log(" HA EMPEZAO");
-			
+			factorLevel = 1;			
 		}
 		
 
@@ -601,7 +593,6 @@ public class gameControl : MonoBehaviour
 	{
 
 		for (float timer = 3; timer >= 0; timer -= Time.deltaTime) {
-			print ("RUTINA change level wait");
 			yield return 0;				
 		}
 		yield return new WaitForSeconds (0.1f);
