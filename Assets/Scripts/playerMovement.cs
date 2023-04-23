@@ -27,10 +27,6 @@ public class playerMovement : MonoBehaviour
 		public float decc;
 		public float acceleartionTouch;
 
-		
-		
-
-	
 		public void move ()
 		{
 
@@ -132,8 +128,6 @@ public class playerMovement : MonoBehaviour
 						Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shakeSmall", 10f);
 						SoundManager.playRaysWoman ();
 						Destroy (other.gameObject);
-			
-
 				}
 
 				if (other.gameObject.tag == "NaveProxy") {
@@ -141,21 +135,6 @@ public class playerMovement : MonoBehaviour
 						other.GetComponent<naveProxyController> ().setWorking ();
 						gameObject.GetComponent<gizmosProxy> ().createGizmos ();
 				}
-
-		
-				// if (other.gameObject.tag == "arana" && gameControl.currentState == gameControl.State.TUTORIAL) {
-
-				// 		GameObject g = GameObject.FindGameObjectWithTag ("GameController");
-				// 		// g.GetComponent<gameControl> ().failingTutorial ();
-
-				// }
-
-				// if (other.gameObject.tag == "snake" && gameControl.currentState == gameControl.State.TUTORIAL) {
-
-				// 		GameObject g = GameObject.FindGameObjectWithTag ("GameController");
-				// 		// g.GetComponent<gameControl> ().failingTutorial ();
-
-				// }
 		}
 
 		IEnumerator moveCoin (GameObject coin)
@@ -174,8 +153,6 @@ public class playerMovement : MonoBehaviour
 
 		public void rotateShipDirection (enemyController _enemyController )
 		{
-
-				// enemyController _enemyController = enemyController.GetComponent<enemyController> ();
 				GameObject closest = _enemyController.getClosest (transform.position);
 
 				if (closest) {
@@ -190,22 +167,6 @@ public class playerMovement : MonoBehaviour
 				}
 		}
 
-		// public void rotateInactive ()
-		// {
-		// 		enemyController _enemyController = enemyController.GetComponent<enemyController> ();
-		// 		GameObject closest = _enemyController.getClosest (transform.position);
-		// 		float angle = calculateAngle (closest.transform.position);
-		// 		Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
-		// 		transform.rotation = Quaternion.Euler (p);
-
-		// 		transform.Rotate (Vector3.forward);
-			
-		// 		Debug.DrawLine (transform.position, Vector2.right, Color.white);
-		// 		Debug.DrawLine (transform.position, Vector3.forward, Color.red);
-				
-		// }
-	
-	
 		float calculateAngle (Vector2 target)
 		{
 				float ay = transform.position.y;

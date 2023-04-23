@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 3b1ba38fd48254f6c9dc05e387d93eb5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyController: {instanceID: 0}
+  - paquete: {instanceID: 0}
+  - coin: {instanceID: 0}
+  - movingText: {instanceID: 0}
+  - movingTextKills: {instanceID: 0}
+  - explosion: {instanceID: 0}
+  - dust: {instanceID: 0}
+  - shotSnd: {instanceID: 0}
+  - thinBullet: {instanceID: 0}
+  - fatBullet: {instanceID: 0}
+  - triBullet: {instanceID: 0}
+  - circularBullet: {instanceID: 0}
+  - _spriterenderer: {instanceID: 0}
+  - explosionRandom: {instanceID: 0}
+  - fatBullet: {fileID: 21300000, guid: c8a94b502a9144132a9949064947b5e8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

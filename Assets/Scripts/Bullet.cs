@@ -1,41 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bulletScript : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
 
 		public float speed;
 		public float angle;
 		public float step;
 
-
 		Vector3 p;
 
 		public GameObject enemyController;
 		public GameObject paquete;
 		public GameObject coin;
-
 		public GameObject movingText;
 		public GameObject movingTextKills;
-
-
-
-		public Sprite thinBullet;
-		public Sprite fatBullet;
-//		public Sprite laserBullet;
-		public Sprite triBullet;
-		public Sprite circularBullet;
-
-		SpriteRenderer _spriterenderer;
 		public GameObject explosion;
 		public GameObject dust;
 		public GameObject explosionRandom;
+		public AudioClip shotSnd;
 
+		// public Sprite triBullet;
+		// public Sprite circularBullet;
 
-	
-	
+		public SpriteRenderer _spriterenderer;
 
-		void  OnExplosion ()
+		public void  OnExplosion ()
 		{
 				Instantiate (explosion, transform.position, Quaternion.identity);
 				SoundManager.playBombaClip (transform.position);
@@ -53,7 +43,7 @@ public class bulletScript : MonoBehaviour
 		void Start ()
 		{
 				_spriterenderer = GetComponentInChildren<SpriteRenderer> ();
-				setBulletType ();
+				// setBulletType ();
 		}
 	
 		void OnTriggerEnter (Collider other)
@@ -95,7 +85,6 @@ public class bulletScript : MonoBehaviour
 		{
 				Vector3 lockZ = new Vector3 (transform.position.x, transform.position.y, 0);
 				transform.position = lockZ;
-
 		}
 
 		void leavePow ()
@@ -103,53 +92,45 @@ public class bulletScript : MonoBehaviour
 				int r = Random.Range (0, 2);
 		
 				if (r == 0) {
-						Instantiate (coin, transform.position, Quaternion.identity);
+					Instantiate (coin, transform.position, Quaternion.identity);
 				} else {
-						Instantiate (paquete, transform.position, transform.rotation);
+					Instantiate (paquete, transform.position, transform.rotation);
 			
 				}
 		}
 
-		public void setBulletType ()
-		{
+		// public void setBulletType ()
+		// {
+		// 		if (WeaponsController.bullets [(int)WeaponsController.currentWeapon] < 1) {
 
-				if (WeaponsController.bullets [(int)WeaponsController.currentWeapon] < 1) {
+		// 			_spriterenderer.sprite = thinBullet;
 
-						_spriterenderer.sprite = thinBullet;
+		// 		} else {
+		// 				switch (WeaponsController.currentWeapon) {
 
-				} else {
-						switch (WeaponsController.currentWeapon) {
-
-						case WeaponsController.WEAPONS.WBLOCK:
-//								SoundManager.playCrispadoClip ();
-								_spriterenderer.sprite = fatBullet;
-								break;
+		// 				case WeaponsController.WEAPONS.WBLOCK:
+		// 						_spriterenderer.sprite = fatBullet;
+		// 						break;
 			
-//						case WeaponsController.WEAPONS.LASER:
-//								_spriterenderer.sprite = laserBullet;
+		// 				case WeaponsController.WEAPONS.TWAY:
+		// 						_spriterenderer.sprite = triBullet;
 
-//								break;
-						case WeaponsController.WEAPONS.TWAY:
-//								SoundManager.playTresClip ();
-								_spriterenderer.sprite = triBullet;
+		// 						break;
+		// 				case WeaponsController.WEAPONS.CIRCULAR:
+		// 						_spriterenderer.sprite = circularBullet;
 
-								break;
-						case WeaponsController.WEAPONS.CIRCULAR:
-//				SoundManager.playci
-								_spriterenderer.sprite = circularBullet;
+		// 						break;
 
+		// 				default:
+		// 						_spriterenderer.sprite = thinBullet;
+
+		// 						break;
 			
-								break;
-
-						default:
-								_spriterenderer.sprite = thinBullet;
-								break;
-			
-						}
-				}
+		// 				}
+		// 		}
 
 
-		}
+		// }
 
 //	
 //		void OnDrawGizmos ()

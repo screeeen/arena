@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 103db6e47b9274027a2c8bd45b43bc72
+guid: f888830a2052346cfab54e6e4e0e275b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -10,11 +10,10 @@ MonoImporter:
   - movingText: {fileID: 100000, guid: b7ae8e2b5b91340bbb10e634dd3adad9, type: 2}
   - movingTextKills: {fileID: 100000, guid: 028562fe5d54c4fcd913d6f23d3ddee8, type: 2}
   - explosion: {fileID: 100000, guid: 395feb286ea964e5eb43b487cba5e04a, type: 2}
-  - dust: {fileID: 100000, guid: b8fa4bbccc439434cb31a83f32cf0997, type: 2}
-  - explosionRandom: {fileID: 100000, guid: f1a8068ad07f443cab8f4f9779718546, type: 2}
-  - shotSnd: {instanceID: 0}
+  - dust: {fileID: 100000, guid: d5dd63509cf3445f8ba786aba7ac8d3c, type: 2}
+  - shotSnd: {fileID: 8300000, guid: 3dd47712f732249c7a34a2f27c845912, type: 3}
   - _spriterenderer: {instanceID: 0}
-  - thinBullet: {instanceID: 0}
+  - explosionRandom: {fileID: 100000, guid: f1a8068ad07f443cab8f4f9779718546, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

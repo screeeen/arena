@@ -67,12 +67,6 @@ public class gameControl : MonoBehaviour
 	public GameObject gameOverObj;
 	public GameObject currentGameOver;
 	
-	// -- BULLETS
-	public GameObject bullet;
-	public GameObject bulletThin;
-	public GameObject bulletLaser;
-	public GameObject raycastObj;
-	public GameObject circController;
 	public GameObject rayo;
 	public GameObject music;
 	AudioSource _music;
@@ -211,7 +205,7 @@ public class gameControl : MonoBehaviour
 			if (currentPlayer) {
 				currentPlayer.GetComponent<playerMovement> ().move ();
 				currentPlayer.GetComponent<playerMovement> ().rotateShipDirection (_enemyController);
-				currentPlayer.GetComponent<disparo> ().dispara (_enemyController, bullet, bulletThin, circController, bulletLaser, raycastObj);
+				currentPlayer.GetComponent<disparo> ().dispara (_enemyController);
 			}
 		}
 	}

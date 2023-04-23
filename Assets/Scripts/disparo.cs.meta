@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 guid: 96a822b43a88a451c9a5d7e39ef5bea7
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rayo: {fileID: 100000, guid: f68627dc2c6d14db8bd5dfcfe3086b82, type: 2}
+  - bulletThin: {fileID: 100002, guid: ce9ee114489c9409c9dc6c22fe2c9b41, type: 2}
+  - bulletFat: {fileID: 1631194661199998, guid: 8d0a205d85ce64eac8c1fc1d4a947c79,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
