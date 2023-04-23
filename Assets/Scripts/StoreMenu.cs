@@ -24,15 +24,15 @@ public class StoreMenu : MonoBehaviour
 
 
 		public ArrayList products;
-		public ArrayList itemsToBuy;
+		// public ArrayList itemsToBuy;
 
-		public ArrayList unlockableItems;
-		public ArrayList unlockableMiis;
-		public ArrayList unlockablesToBuy;
+		// public ArrayList unlockableItems;
+		// public ArrayList unlockableMiis;
+		// public ArrayList unlockablesToBuy;
 
-		public ArrayList productPacks;
-		public ArrayList miiPacks;
-		public ArrayList packsToBuy;
+		// public ArrayList productPacks;
+		// public ArrayList miiPacks;
+		// public ArrayList packsToBuy;
 
 
 		public Texture hexGfx;
@@ -61,15 +61,15 @@ public class StoreMenu : MonoBehaviour
 		void Awake ()
 		{
 				products = new ArrayList ();
-				itemsToBuy = new ArrayList ();
+				// itemsToBuy = new ArrayList ();
 		
-				unlockableItems = new ArrayList ();
-				unlockableMiis = new ArrayList ();
-				unlockablesToBuy = new ArrayList ();
+				// unlockableItems = new ArrayList ();
+				// unlockableMiis = new ArrayList ();
+				// unlockablesToBuy = new ArrayList ();
 		
-				productPacks = new ArrayList ();
-				miiPacks = new ArrayList ();
-				packsToBuy = new ArrayList ();
+				// productPacks = new ArrayList ();
+				// miiPacks = new ArrayList ();
+				// packsToBuy = new ArrayList ();
 
 				iconGfx = new ArrayList ();
 				iconBombaGfx = new ArrayList ();
@@ -199,7 +199,6 @@ public class StoreMenu : MonoBehaviour
 					
 										if (GUI.Button (new Rect (posButton.x, posButton.y + sizeButton.y * i, sizeButton.x * globales.SCREENSCALE.x, sizeButton.y * globales.SCREENSCALE.y), "XXXX here" + "\n <size=8> COINS</size>", storeButtonSt)) {
 												SoundManager.playShortButton ();
-												// Soomla.Store.StoreInventory.BuyItem (itemsToBuy [i]as string);
 												WeaponsController.currentWeapon = (WeaponsController.WEAPONS)i;
 												// print (WeaponsController.currentWeapon);
 										}
@@ -269,7 +268,7 @@ public class StoreMenu : MonoBehaviour
 //								}
 //
 //								Rect labelRect = new Rect (posCoinBox.x + sizeCoinBox.x / 20, posCoinBox.y + sizeCoinBox.y * j, (sizeCoinBox.x / 2.4f) * globales.SCREENSCALE.x, sizeCoinButton.y * globales.SCREENSCALE.y);
-////						GUI.Label (labelRect, "\nCOINS \n XXXX coins pack", labelSt);
+////							GUI.Label (labelRect, "\nCOINS \n XXXX coins pack", labelSt);
 //								GUI.color = Color.gray;
 //								GUI.Label (new Rect (labelRect.x, labelRect.y + offsetLetterShadow, labelRect.width, labelRect.height), " \n<color=black>" + miPacks.MarketTitle.ToString () + "</color> \n" + miPacks.MarketDescription.ToString (), labelSt);// + " " + mi.Price.ToString ("0.00") + " " + mi.MarketCurrencyCode, );
 //								GUI.color = Color.white;

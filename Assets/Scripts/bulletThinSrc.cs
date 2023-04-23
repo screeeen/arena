@@ -32,9 +32,9 @@ public class bulletThinSrc : MonoBehaviour
 				Instantiate (explosion, transform.position, Quaternion.identity);
 				SoundManager.playBombaClip (transform.position);
 				//dust
-//				for (int i = 0; i< globales.dustLevel; i++) {
-//						Instantiate (dust, transform.position, Quaternion.identity);
-//				}
+				for (int i = 0; i< globales.dustLevel; i++) {
+						Instantiate (dust, transform.position, Quaternion.identity);
+				}
 
 		}
 	

@@ -85,6 +85,8 @@ public class InterludeScr : MonoBehaviour
 
 				//LEFT SIDE
 				messageRect.x = dimensions.x - 40;
+				Debug.Log("CURRENT STAGE");
+				Debug.Log(globales.currentStage);
 				GUI.Label (messageRect, "STAGE: " + globales.currentStage, marqueeBigSt);
 
 				//RIGHT SIDE

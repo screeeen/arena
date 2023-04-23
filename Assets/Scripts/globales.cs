@@ -14,9 +14,10 @@ public class globales : MonoBehaviour
 	public static int kills;
 	public static int maxKills1;
 	public static int lastKills;
-	public static int hview;
-	public static int wview;
+	// public static int hview;
+	// public static int wview;
 	public static int numberOfGames;
+	public static int earnedCoins;
 	public static int milisecsEnemyDestroyed;
 	public static int dustLevel;
 	// public static int currentMap; // MAPAS? //HACK
@@ -30,12 +31,12 @@ public class globales : MonoBehaviour
 	public static float maxX ;
 	public static float minY ;
 	public static float maxY ;
-	public static float  WIDTH;
+	public static float WIDTH;
 	public static float HEIGHT;
 	public static float SCREENH;
 	public static float SCREENW;
 
-	public static bool isLandscape;
+	// public static bool isLandscape;
 	public static bool ISWIDE ;
 	
 	
@@ -43,17 +44,18 @@ public class globales : MonoBehaviour
 	public static bool shaking = false;
 	public static bool showNewRecord = false;
 	public static bool showNewLevel = false;
-	public static bool tutorial;
-	public static bool tutorialEnemiesReady = false;
-	public static bool failedTutorial = false;
+	// public static bool tutorial;
+	// public static bool tutorialEnemiesReady = false;
+	// public static bool failedTutorial = false;
 	public static bool sfxSwitch = false; //inverted
 	public static bool musicSwitch = false; //inverted
 	
 	// private static Soomla.Store.EventHandler handler;
 
-	public static Vector2 SCREENVECTOR;
+	// public static Vector2 SCREENVECTOR;
 	public static Vector2 SCREENSCALE;
 
+	//TODO: que valores tiene esto??
 	public static string OLEADA;
 
 	static List<Matrix4x4> stack;
@@ -63,9 +65,7 @@ public class globales : MonoBehaviour
 		Application.targetFrameRate = frameRate;
 		getData ();
 		setCamera ();
-		// if (!numberOfGames == null) {
-			numberOfGames = 0;
-		// }
+		numberOfGames = 0;
 		milisecsEnemyDestroyed = 30;
 	}
 
@@ -111,29 +111,28 @@ public class globales : MonoBehaviour
 		SCREENH = Screen.height;
 		WIDTH = SCREENW;
 		HEIGHT = SCREENH;
-		SCREENVECTOR = new Vector2 (SCREENW, SCREENH);
+		// SCREENVECTOR = new Vector2 (SCREENW, SCREENH);
 		SCREENSCALE = new Vector2 (SCREENW / WIDTH, SCREENH / HEIGHT);
 
 	}
 
-	
 	// Use this for initialization
 	void Start ()
 	{
-		soundCheck ();
+		setSoundSettings ();
+		//TODO: por que se llama 2 veces? arriba en awake tambien
 		setCamera ();
-		dustLevel = 100;
+		dustLevel = 2; //TODO: ver como funciona esta mecanica
 	}
 
 	public static void clearMenu ()
 	{
+		//TODO: hay alguna forma de optimizar el findgames with tag?
 		GameObject[] gos = GameObject.FindGameObjectsWithTag ("menu");
 		foreach (GameObject go in gos) {
 			Destroy (go);
 		}
 	}
-
-
 
 	public static Vector2 getRandomPos ()
 	{
@@ -275,9 +274,14 @@ public class globales : MonoBehaviour
 			globales.numberOfGames = PlayerPrefs.GetInt ("numberOfGames");
 		}
 
+		if (PlayerPrefs.HasKey ("earnedCoins")) {
+			globales.earnedCoins = PlayerPrefs.GetInt ("earnedCoins");
+		}
+
 		if (GetBool ("sound")) {
 			globales.sfxSwitch = GetBool ("sound");
 		}
+
 		if (GetBool ("music")) {
 			globales.musicSwitch = GetBool ("music");
 		}
@@ -288,9 +292,7 @@ public class globales : MonoBehaviour
 		// Debug.Log ("--currentWeapon: " + WeaponsController.currentWeapon);
 		// Debug.Log ("--sound: " + sfxSwitch);
 		// Debug.Log ("--music: " + musicSwitch);
-
-
-
+		Debug.Log ("earnedCoins: " + earnedCoins);
 	}
 	
 	void deleteData ()
@@ -298,8 +300,9 @@ public class globales : MonoBehaviour
 		PlayerPrefs.DeleteAll ();
 		kills = 0;
 		maxKills1 = 0;
+		earnedCoins = 0;
 		WeaponsController.currentWeapon = WeaponsController.WEAPONS.WBLOCK;
-		numberOfGames = -2;
+		numberOfGames = -2; //TODO: wtf?!
 		globales.level = 0;
 
 
@@ -313,10 +316,10 @@ public class globales : MonoBehaviour
 		if (sfxSwitch) {
 			sfxSwitch = false;
 			SoundManager.playShortButton ();
-			soundCheck ();
+			setSoundSettings ();
 		} else {
 			sfxSwitch = true;
-			soundCheck ();	
+			setSoundSettings ();	
 		}
 	}
 
@@ -324,14 +327,14 @@ public class globales : MonoBehaviour
 	{
 		if (musicSwitch) {
 			musicSwitch = false; //inverted
-			soundCheck ();
+			setSoundSettings ();
 		} else {
 			musicSwitch = true;
-			soundCheck ();	
+			setSoundSettings ();	
 		}
 	}
 
-	public static void soundCheck ()
+	public static void setSoundSettings ()
 	{
 		GameObject sound = GameObject.FindGameObjectWithTag ("soundManager");
 		GameObject music = GameObject.FindGameObjectWithTag ("music");
@@ -342,8 +345,6 @@ public class globales : MonoBehaviour
 
 		if (music) {
 			music.GetComponent<AudioSource> ().mute = musicSwitch;
-//						music.GetComponent<songsBatch> ().selectSong ();
-
 		}
 	}
 	

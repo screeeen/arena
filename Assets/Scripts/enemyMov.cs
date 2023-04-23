@@ -40,21 +40,13 @@ public class enemyMov : MonoBehaviour
 
 		void setSpeed ()
 		{
-
 				float factorSpeed = (globales.level % 10) + 0.8f;
-//				float factorTurningSpeed = globales.level = (globales.level % 10) / 10;
-
-//				print ("FACTORSPEED " + factorSpeed);
-//				print ("TURNING " + factorTurningSpeed);
-
 				speed = Random.Range (factorSpeed, maxSpeed + factorSpeed / 10);
 				turningSpeed = Random.Range (1f, turningSpeedMax / 1.4f);
-
 		}
 
 		void Update ()
 		{
-		
 				timer -= 1;
 				if (timer < 0) {
 						resetMovement ();
@@ -64,8 +56,6 @@ public class enemyMov : MonoBehaviour
 				if ((Vector2)transform.position == target) {
 						resetMovement ();
 				}
-		
-		
 		}
 
 		void resetMovement ()
@@ -75,9 +65,7 @@ public class enemyMov : MonoBehaviour
 				if (player) {
 						target = player.transform.position;
 				}
-
 		}
-
 
 		public void move ()
 		{

@@ -188,6 +188,7 @@ public class gameOverSrc : MonoBehaviour
 
 		//NEW RECORD 
 //				globales.showNewRecord = true;
+		//TODO: investigar
 		if (globales.showNewRecord) {
 			GUI.color = Color.black;
 			GUI.Label (new Rect (messageRect.x + xU, messageRect.y - messageRect.height * 7 + offsetLetter + yU, messageRect.width, messageRect.height), "NEW RECORD!", marqueeSt);

@@ -35,12 +35,6 @@ public class Coin : MonoBehaviour
 		void Start ()
 		{
 
-//				transform.position = globales.getRandomPos ();
-
-
-
-
-
 				coinTypeVar = (int)getCoinType ();
 				lift = false;
 				coinSt.fontSize = (int)globales.SCREENW / 40;
@@ -126,6 +120,8 @@ public class Coin : MonoBehaviour
 		
 				if (other.gameObject.tag == "hole" || other.gameObject.tag == "paguete" || other.gameObject.tag == "coin") {
 						animOffset ();
+						//TODO: que hace aqui?
+						Debug.Log(" se ha movido la coin chocando con hole");
 						//						Destroy (gameObject);
 			
 				}

@@ -41,9 +41,9 @@ public class bulletScript : MonoBehaviour
 				SoundManager.playBombaClip (transform.position);
 
 				//dust
-//				for (int i = 0; i< globales.dustLevel; i++) {
-//						Instantiate (dust, transform.position, Quaternion.identity);
-//				}
+				for (int i = 0; i< globales.dustLevel; i++) {
+						Instantiate (dust, transform.position, Quaternion.identity);
+				}
 
 				Instantiate (explosionRandom, transform.position, Quaternion.identity);
 		

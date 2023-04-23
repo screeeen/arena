@@ -4,6 +4,7 @@ using System.Collections;
 public class WeaponsController : MonoBehaviour
 {
 
+//TODO: ver como es la mecanica de weapons
 		public static int[] bullets = new int[WEAPONS.GetValues (typeof(WEAPONS)).Length];
 		public static bool[] weaponPurchased = new bool[WEAPONS.GetValues (typeof(WEAPONS)).Length];
 		public static bool[] weaponActivated = new bool[WEAPONS.GetValues (typeof(WEAPONS)).Length];
@@ -81,46 +82,7 @@ public class WeaponsController : MonoBehaviour
 		public static void updateWeapons ()
 		{
 
-				#if UNITY_IOS || UNITY_ANDROID
-
-				weaponPurchased [0] = true;
-
 				bombaPurchased [0] = true;
-				bombaActivated [0] = true;
-
-				//HACK activación armas?
-
-				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.LASER_ITEM_ID) > 0) {
-						weaponPurchased [1] = true;
-				// }
-				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.TWAY_ITEM_ID) > 0) {
-						weaponPurchased [2] = true;
-
-				// }
-				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.CIRCLE_ITEM_ID) > 0) {
-						weaponPurchased [3] = true;
-
-				// }
-				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.MOIRE_ITEM_ID) > 0) {
-						weaponPurchased [4] = true;
-
-				// }
-
-				// if (Soomla.Store.StoreInventory.GetItemBalance (Soomla.Store.GameAssets.RAYOS_ITEM_ID) > 0) {
-						bombaPurchased [1] = true;
-						// print ("BOMBA ADS AQUI: " + Soomla.Store.GameAssets.RAYOS_ITEM_ID);
-				// }
-
-
-
-#endif
-
-
-
-				# if UNITY_EDITOR || UNITY_ANDROID
-
-				bombaPurchased [0] = true;
-
 
 				for (int i = 0; i< bullets.Length; i++) {
 						if (bullets [i] == null) {
@@ -159,16 +121,12 @@ public class WeaponsController : MonoBehaviour
 //				}
 //				print ("CURRENTWEAPON " + currentWeapon);
 
-#endif
 				weaponActivated [0] = true;
 				for (int w = 1; w<weaponActivated.Length; w++) {
 						if (weaponActivated [w] == true) {
 								print ("WEAPONS TO CHECK " + w + weaponActivated [w]);
 								weaponActivated [w] = setMeOnly (w);
 						} 
-			
-//						print ("FINAL ES: " + w + weaponActivated [w]);
-			
 				}
 
 		}

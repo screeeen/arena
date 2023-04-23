@@ -3,11 +3,6 @@ using System.Collections;
 using UnityEngine.Advertisements;
 using UnityEngine.SocialPlatforms;
 
-
-// GAME CONTROL ARENA (MONSTER LITE)
-
-
-
 public class gameControl : MonoBehaviour
 {
 
@@ -41,8 +36,10 @@ public class gameControl : MonoBehaviour
 	public static State
 		currentState;
 
+	// cambiar todo midPos a Vector2.zero
 	public static Vector2 midPos = Vector2.zero;
 	public static Vector2 highPos;
+	// que esto?
 	Vector2 posH;
 
 
@@ -60,7 +57,7 @@ public class gameControl : MonoBehaviour
 	GameObject currentWeaponRoom;
 	GameObject currentStoreRoom;
 
-	public GameObject tutorialControllerObj;
+	// public GameObject tutorialControllerObj;
 	public GameObject weaponRoom;
 	public GameObject storeObj;	
 	public GameObject bombaObj;
@@ -88,15 +85,15 @@ public class gameControl : MonoBehaviour
 	public GameObject naveProxy;
 	GameObject currentNaveProxy;
 	
-	public float gatheringTime;
+	// public float gatheringTime;
 	public static float stageTime;
 	public int maxNaveProxy;
 
-	[SerializeField]
-	bool
-		newWeaponFlag = false;
+	// [SerializeField]
+	// bool
+	// 	newWeaponFlag = false;
 	
-	GameCenterSingleton gameCenter;
+	// GameCenterSingleton gameCenter;
 
 	[SerializeField]
 	public static bool slowMotion = true;
@@ -115,6 +112,7 @@ public class gameControl : MonoBehaviour
 		currentState = State.MENU;
 		initMenu ();
 		slowDead = false;
+		// posH = Vector2.zero
 		posH = midPos;
 		_music = music.GetComponent<AudioSource> ();
 	}
@@ -167,7 +165,6 @@ public class gameControl : MonoBehaviour
 
 			if (SoundManager.soundPlayer.pitch < 1) {
 				SoundManager.soundPlayer.pitch += 0.1f;
-				
 			}
 
 			if (SoundManager.soundPlayer.minDistance < 1) {
@@ -199,9 +196,7 @@ public class gameControl : MonoBehaviour
 			SoundManager.soundPlayer.pitch -= 0.1f;
 
 		}
-
 		levelUpgrade ();
-
 	}
 
 	void FixedUpdate ()
@@ -226,7 +221,7 @@ public class gameControl : MonoBehaviour
 
 	public void toGame ()
 	{
-		// WeaponsController.updateWeapons (); // for android check!
+		WeaponsController.updateWeapons (); // TODO: controlar que hace esto
 		currentState = State.INGAME;
 		globales.numberOfGames += 1;
 		if (currentPlayer) {
@@ -248,9 +243,7 @@ public class gameControl : MonoBehaviour
 	{
 		setLastKills ();
 		currentState = State.INGAME;
-		
-
-		
+	
 		//RESETS 
 		// CoinsManager.earnedCoins = 0; // for android check!
 		stageTime = 0;
@@ -279,7 +272,6 @@ public class gameControl : MonoBehaviour
 
 			if (!_enemyController) {
 				currentEnemyController = (GameObject)Instantiate (enemyController, posH, Quaternion.identity);
-
 			}
 			_enemyController = currentEnemyController.GetComponent<enemyController> ();
 			_enemyController.updatePosHoles ();
@@ -537,8 +529,6 @@ public class gameControl : MonoBehaviour
 	{
 		currentState = gameControl.State.GAMEOVER;
 		StartCoroutine ("wait");
-
-
 	}
 
 	IEnumerator wait ()

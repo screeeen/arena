@@ -73,9 +73,9 @@ public class circularScr : MonoBehaviour
 				Instantiate (explosion, transform.position, Quaternion.identity);
 		
 //				//dust
-//				for (int i = 0; i< globales.dustLevel; i++) {
-//						Instantiate (dust, transform.position, Quaternion.identity);
-//				}
+				for (int i = 0; i< globales.dustLevel; i++) {
+						Instantiate (dust, transform.position, Quaternion.identity);
+				}
 				Instantiate (randomExplosion, transform.position, Quaternion.identity);
 
 		
