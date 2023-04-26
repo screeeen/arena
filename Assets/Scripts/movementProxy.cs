@@ -19,8 +19,8 @@ public class movementProxy : MonoBehaviour
 						Vector3 p = new Vector3 (transform.position.x, transform.position.y, Mathf.Rad2Deg * angle);
 						transform.rotation = Quaternion.Euler (p);
 			
-												Debug.DrawLine (transform.position, Vector2.right, Color.white);
-												Debug.DrawLine (transform.position, Vector3.forward, Color.red);
+						Debug.DrawLine (transform.position, Vector2.right, Color.white);
+						Debug.DrawLine (transform.position, Vector3.forward, Color.red);
 				}
 		}
 

@@ -56,19 +56,19 @@ public class disparo : MonoBehaviour
 
 													break;
 					
-											// case WeaponsController.WEAPONS.LASER:
-											// 		GameObject bulletL = Instantiate (bulletLaser, transform.position, transform.rotation) as GameObject;
-											// 		bulletL.GetComponent<Rigidbody> ().AddForce (transform.right * shotForce / 80);
-											// 		SoundManager.playlaserBulletClip ();
+											case WeaponsController.WEAPONS.LASER:
+													GameObject bulletL = Instantiate (bulletLaser, transform.position, transform.rotation) as GameObject;
+													bulletL.GetComponent<Rigidbody> ().AddForce (transform.right * shotForce / 80);
+													SoundManager.playlaserBulletClip ();
 						
-											// 		GameObject raycastL = Instantiate (raycastObj, transform.position, transform.rotation) as GameObject;
-											// 		raycastL.transform.parent = transform;
-											// 		raycastL.GetComponent<RaycastScr> ().length = globales.SCREENW;
+													GameObject raycastL = Instantiate (raycastObj, transform.position, transform.rotation) as GameObject;
+													raycastL.transform.parent = transform;
+													raycastL.GetComponent<RaycastScr> ().length = globales.SCREENW;
 
-											// 		WeaponsController.bullets [(int)WeaponsController.currentWeapon] -= 1;
-											// 		shootTime = shotTimeLaser;
-											// 		Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shakeSmall", 1.5f);
-											// 		break;
+													WeaponsController.bullets [(int)WeaponsController.currentWeapon] -= 1;
+													shootTime = shotTimeLaser;
+													Camera.main.GetComponent<cameraScript> ().StartCoroutine ("shakeSmall", 1.5f);
+													break;
 
 											// case WeaponsController.WEAPONS.MOIRE:
 

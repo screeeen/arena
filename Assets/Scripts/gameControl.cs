@@ -21,12 +21,10 @@ public class gameControl : MonoBehaviour
 		MENU = 0,
 		INTERLUDE = 1,
 		WEAPONROOM = 2,
-		MAP = 3,
 		INGAME = 4,
 		NEWWEAPON = 5,
 		GAMEOVER = 6,
 		STORE = 7,
-		// TUTORIAL = 8
 	}
 
 	public State status;
@@ -83,12 +81,6 @@ public class gameControl : MonoBehaviour
 	public static float stageTime;
 	public int maxNaveProxy;
 
-	// [SerializeField]
-	// bool
-	// 	newWeaponFlag = false;
-	
-	// GameCenterSingleton gameCenter;
-
 	[SerializeField]
 	public static bool slowMotion = true;
 	[SerializeField]
@@ -106,7 +98,6 @@ public class gameControl : MonoBehaviour
 		currentState = State.MENU;
 		initMenu ();
 		slowDead = false;
-		// posH = Vector2.zero
 		posH = midPos;
 		_music = music.GetComponent<AudioSource> ();
 	}
@@ -125,12 +116,6 @@ public class gameControl : MonoBehaviour
 								removeMenu ();
 								toGame ();
 								currentState = State.INGAME;
-								break;
-						case State.MAP:
-								break;	
-						case State.INTERLUDE:
-								break;
-						case State.NEWWEAPON:
 								break;
 						case State.GAMEOVER:
 								break;
@@ -153,7 +138,7 @@ public class gameControl : MonoBehaviour
 				if (_music.pitch > 0) {
 					_music.pitch -= 0.1f;
 				}
-			// }
+			}
 
 			//RESTORE SOUND SPECS
 
@@ -172,9 +157,6 @@ public class gameControl : MonoBehaviour
 			if (!slowMotion && _music.pitch < 1) {
 				_music.pitch += 0.1f;
 			}
-			
-			
-		}
 
 		//pehkingpah dead
 		if (slowDead) {
@@ -239,13 +221,13 @@ public class gameControl : MonoBehaviour
 		currentState = State.INGAME;
 	
 		//RESETS 
-		// CoinsManager.earnedCoins = 0; // for android check!
+		CoinsManager.earnedCoins = 0;
 		stageTime = 0;
 		bool start = false;
 		naveProxyController.gizmosReady = false;
 		GetComponent<HUD> ().Start ();
 		globales.resetCameraColor ();
-		// globales.setCamera ();
+		
 
 
 		while (!start) {
@@ -631,16 +613,11 @@ public class gameControl : MonoBehaviour
 	
 	public void clearPowerUps ()
 	{
-		
-		//				GameObject[] gosProxy = GameObject.FindGameObjectsWithTag ("NaveProxy");
+	
 		GameObject[] gosRays = GameObject.FindGameObjectsWithTag ("rayoBomba");
 		GameObject[] gosBomb = GameObject.FindGameObjectsWithTag ("bomba");
 		GameObject[] gosPaquete = GameObject.FindGameObjectsWithTag ("paquete");
 		
-		
-		//				foreach (GameObject go in gosProxy) {
-		//						Destroy (go);
-		//				}
 		foreach (GameObject go in gosRays) {
 			Destroy (go);
 		}
@@ -650,9 +627,6 @@ public class gameControl : MonoBehaviour
 		foreach (GameObject go in gosPaquete) {
 			Destroy (go);
 		}
-		
-		
-		
 	}
 
 	GameObject createNaveProxy ()

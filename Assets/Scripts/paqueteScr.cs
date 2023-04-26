@@ -42,12 +42,9 @@ public class paqueteScr : MonoBehaviour
 				}
 
 				if (lift) {
-//						int t = 30;
-//						while (t>0) {
-						transform.Translate (0, aumento, 0);
-//						transform.localScale = new Vector3 (transform.localScale.x + aumento, transform.localScale.y + aumento, 0);
-						lifeTime -= 30;//						}
 
+						transform.Translate (0, aumento, 0);
+						// lifeTime -= 1;
 				}
 		}
 	
@@ -80,14 +77,19 @@ public class paqueteScr : MonoBehaviour
 				}
 		}
 
-		public void triggerAnim ()
+		public void giveBulletsAndLeave()
 		{
-		
-				lift = true;
-				GetComponentInChildren<Animation> ().Play ("feedbackGrow");
-//				Destroy (gameObject);
+				transform.GetChild (0).GetComponent<Animation> ().Play ();
+				transform.GetChild (0).GetComponent<Animation> ().Rewind ();
+				giveBullets ();
+				StartCoroutine(Die ());
 		}
 
-
+		private IEnumerator Die () {
+			    //  PlayAnimation(GlobalSettings.animDeath1, WrapeMode.ClampForever);
+    //  yield return new WaitForSeconds(gameObject, GlobalSettings.animDeath1.length)
+			yield return new WaitForSeconds (.5f);
+			Destroy (gameObject);
+		}
 
 }

@@ -139,7 +139,7 @@ public class Coin : MonoBehaviour
 		{
 
 				lift = true;
-				GetComponentInChildren<Animation> ().Play ("feedbackGrow");
+				// GetComponentInChildren<Animation> ().Play ("feedbackGrow");
 
 		}
 

@@ -91,18 +91,13 @@ public class playerMovement : MonoBehaviour
 
 				if (other.gameObject.tag == "paquete") {
 
-						other.gameObject.GetComponent<paqueteScr> ().triggerAnim ();
 						SoundManager.playPillarPaqueteClip ();
-						other.gameObject.GetComponent<paqueteScr> ().giveBullets ();
-			
+						other.gameObject.GetComponent<paqueteScr> ().giveBulletsAndLeave();
 				}
 
 				if (other.gameObject.tag == "coin") {
 						SoundManager.playPillarPaqueteClip ();
 						CoinsManager.addCoins (other.GetComponent<Coin> ().coinTypeVar);
-
-					
-
 						StartCoroutine (moveCoin (other.gameObject));
 
 				}

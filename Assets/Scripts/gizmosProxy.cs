@@ -16,7 +16,6 @@ public class gizmosProxy : MonoBehaviour
 		
 				foreach (GameObject go in gos) {
 
-//						print ("LENGHT " + gos.Length);
 						bool bai = go.GetComponent<naveProxyController> ().isWorking ();
 
 						if (bai) {
@@ -29,12 +28,8 @@ public class gizmosProxy : MonoBehaviour
 
 										GameObject l2 = Instantiate (line, transform.position, Quaternion.identity) as GameObject;
 										l2.name = "yo";
-//										GameObject p = GameObject.FindGameObjectWithTag ("Player");
-//										if (p) {
 										l2.GetComponent<LineScr> ().setParams (gameObject, go);
 										l2.transform.parent = transform;
-
-//										}
 								}
 								naveProxyController.gizmosReady = true;
 						}
