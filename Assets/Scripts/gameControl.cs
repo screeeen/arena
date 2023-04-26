@@ -135,9 +135,9 @@ public class gameControl : MonoBehaviour
 					currentPlayer.GetComponentInChildren<Animator> ().Play ("landingAnim");
 				}
 
-				if (_music.pitch > 0) {
-					_music.pitch -= 0.1f;
-				}
+				// if (_music.pitch > 0) {
+				// 	_music.pitch -= 0.1f;
+				// }
 			}
 
 			//RESTORE SOUND SPECS
@@ -154,9 +154,9 @@ public class gameControl : MonoBehaviour
 			if (_music.volume < 1) {
 				_music.volume += 0.2f;
 			}
-			if (!slowMotion && _music.pitch < 1) {
-				_music.pitch += 0.1f;
-			}
+			// if (!slowMotion && _music.pitch < 1) {
+			// 	_music.pitch += 0.1f;
+			// }
 
 		//pehkingpah dead
 		if (slowDead) {

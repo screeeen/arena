@@ -5,6 +5,8 @@ public class LineScr : MonoBehaviour
 {
 		GameObject target;
 		int lengthOfLineRenderer = 2;
+		// Color blue = new Color(0.1788003f,.1817678f,.7735849f);
+		// Color blue = new Color(.5f,.5f,.9f);
 		Color blue = Color.blue;
 		Color white = Color.white;
 	
@@ -16,8 +18,8 @@ public class LineScr : MonoBehaviour
 		{
 				LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer> ();
 				lineRenderer.material = new Material (Shader.Find ("Particles/Additive"));
-				lineRenderer.SetColors (blue, white);
-				lineRenderer.SetWidth (0.01F, 0.01F);
+				lineRenderer.SetColors (blue, blue);
+				lineRenderer.SetWidth (0.04F, 0.04F);
 				lineRenderer.SetVertexCount (lengthOfLineRenderer);
 				lineRenderer.castShadows = false;
 				lineRenderer.receiveShadows = false;

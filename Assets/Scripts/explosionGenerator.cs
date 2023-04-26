@@ -20,6 +20,13 @@ public class explosionGenerator : MonoBehaviour
 
 				}
 				// Destroy (gameObject);
+				StartCoroutine(Die ());
+
+		}
+
+			private IEnumerator Die () {				
+			yield return new WaitForSeconds (.5f);
+			Destroy (gameObject);
 		}
 	
 
